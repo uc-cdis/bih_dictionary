@@ -58,10 +58,18 @@ primary_site
     items:
       type: string
 
+  disease_type:
+    description: The primary type of disease studied in this imaging study, if applicable.
+    type: string
+
   PatientAge:
     description: (0010,1010) The patient's age at the time of the imaging study.
     type: number
   
+  primary_site:
+    description: The primary body site studied in this imaging study.
+    type: string
+
   StudyDescription:
     description: (0008, 1030) Study Description.
     type: string
@@ -83,5 +91,3 @@ primary_site
   datasets:
     description: The submitter_id or id of the dataset this case belongs to, i.e., a link to a record in the parent node.
     $ref: "_definitions.yaml#/to_many"
-
-
