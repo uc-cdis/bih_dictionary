@@ -47,11 +47,6 @@ properties:
 
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
-
-disease_type
-primary_site
-
-
   BodyPartExamined:
     description: (0018, 0015) Body Part Examined.
     type: array
@@ -61,6 +56,12 @@ primary_site
   disease_type:
     description: The primary type of disease studied in this imaging study, if applicable.
     type: string
+
+  Modality:
+    description: The modalities of the imaging study; derived from (0008, 0060) Modality.
+    type: array
+    items:
+      type: string
 
   PatientAge:
     description: (0010,1010) The patient's age at the time of the imaging study.
@@ -73,12 +74,6 @@ primary_site
   StudyDescription:
     description: (0008, 1030) Study Description.
     type: string
-
-  Modality:
-    description: The modalities of the imaging study; derived from (0008, 0060) Modality.
-    type: array
-    items:
-      type: string
 
   StudyInstanceUID:
     description: (0020, 000d) Study Instance UID
