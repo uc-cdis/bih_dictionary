@@ -31,51 +31,22 @@ links:
 required:
   - submitter_id
   - type
-  - data_description
   - projects
+  - collection_id
 
 uniqueKeys:
   - [id]
   - [project_id, submitter_id]
 
 properties:
+  $ref: "_definitions.yaml#/ubiquitous_properties"
 
-  #system properties, do not change or remove:
-  created_datetime:
-    $ref: "_definitions.yaml#/datetime"
-
-  id:
-    $ref: "_definitions.yaml#/UUID"
-
-  project_id:
-    $ref: "_definitions.yaml#/project_id"
-
-  state:
-    $ref: "_definitions.yaml#/state"
-
-  submitter_id:
-    description: A human-readable identifier for the study's record in the database. It can be used in place of the UUID for identifying or recalling a record.
-    type: string
-
-  type:
-    description: The name of the node in the database to be used in queries. In this case "dataset".
-    enum:
-      - dataset
-
-  updated_datetime:
-    $ref: "_definitions.yaml#/datetime"
-
-  # additional properties to describe the dataset
-  acknowledgement:
-    description: Publication acknowledgement(s) for the published dataset.
+  collection_id:
+    description: A unique identifier for the dataset.
     type: string
 
   data_citation:
     description: The citation for the published dataset.
-    type: string
-
-  data_contributor:
-    description: The name of the organization or individual that the contributed dataset belongs to.
     type: string
 
   data_description:
@@ -104,26 +75,6 @@ properties:
 
   primary_site:
     description: The primary body site studied in this dataset.
-    type: string
-
-  publication_citation:
-    description: The major or main publication(s) associated with the data itself or with the publication that published the dataset.
-    type: string
-
-  research_description:
-    description: If the dataset is related to a research study, provide a brief, free-text description or abstract of the study being performed, for example, the hypothesis being tested and a very brief description of the materials, methods and results.
-    type: string
-
-  research_design:
-    description: A summary of the goals of the research or a general description of the research's relationship to a clinical application.
-    type: string
-
-  research_objective:
-    description: The general objective of the research; what the researchers hope to discover or determine.
-    type: string
-
-  research_setup:
-    description: A high level description of the setup used to achieve the research objectives.
     type: string
 
   projects:
