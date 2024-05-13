@@ -55,11 +55,9 @@ properties:
 
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
-  authz:
-    description: The authz of the imaging series, if applicable; used for 
-    type: array
-    items:
-      type: string
+  BodyPartExamined:
+    description: (0018, 0015) Body Part Examined.
+    type: string
 
   data_category:
     term:
@@ -80,23 +78,11 @@ properties:
     description: A URL where the imaging series can be viewed.
     type: string
 
-  file_name:
-    description: The file_name of the imaging series file, if applicable.
-    type: string
-
-  file_size:
-    description: The file_size in bytes of the imaging series file, if applicable.
-    type: integer
-
-  manifest:
-    description: The list of object_ids for the imaging series, if applicable.
+  object_ids:
+    description: The list of file identifiers (object_ids, DRS URIs, or data GUIDs, etc.) for the imaging series, if applicable.
     type: array
     items:
       type: string
-
-  md5sum:
-    description: The md5sum of the imaging series file, if applicable.
-    type: string
 
   Manufacturer:
     description: (0008, 0070) Manufacturer
@@ -110,16 +96,16 @@ properties:
     description: (0008, 0060) Modality
     type: string
 
-  object_id:
-    description: The object_id (data GUID) of the imaging series file, if applicable.
-    type: string
-
   SeriesDescription:
     description: (0008, 103e) Series Description
     type: string
 
   SeriesInstanceUID:
     description: (0020, 000e) Series Instance UID
+    type: string
+
+  ViewPosition:
+    description: (0018,5101) Radiographic view associated with Patient Position (0018,5100).
     type: string
 
   # links
