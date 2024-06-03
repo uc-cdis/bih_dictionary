@@ -4,7 +4,7 @@ id: "imaging_series"
 title: Imaging Series
 type: object
 namespace: https://imaging-hub.data-commons.org
-category: medical_history
+category: medical_imaging
 program: '*'
 project: '*'
 description: Metadata related to an imaging series to which one or more image instances belong.
@@ -30,10 +30,10 @@ links:
         target_type: dataset
         multiplicity: many_to_many
         required: false
-      - name: cases
+      - name: subjects
         backref: imaging_series
         label: related_to
-        target_type: case
+        target_type: subject
         multiplicity: many_to_one
         required: false
       - name: imaging_studies
@@ -44,8 +44,8 @@ links:
         required: false
 
 required:
-  - submitter_id
   - type
+  - submitter_id
 
 uniqueKeys:
   - [id]
@@ -57,21 +57,6 @@ properties:
 
   BodyPartExamined:
     description: (0018, 0015) Body Part Examined.
-    type: string
-
-  data_category:
-    term:
-      $ref: "_terms.yaml#/data_category"
-    type: string
-
-  data_format:
-    term:
-      $ref: "_terms.yaml#/data_format"
-    type: string
-
-  data_type:
-    term:
-      $ref: "_terms.yaml#/data_type"
     type: string
 
   dicom_viewer_url:
@@ -113,8 +98,8 @@ properties:
     description: The submitter_id or id of the imaging_study this imaging_series belongs to, i.e., a link to a record in the parent node.
     $ref: "_definitions.yaml#/to_one"
 
-  cases:
-    description: The submitter_id or id of the case observed in this imaging_series, i.e., a link to a record in the parent node.
+  subjects:
+    description: The submitter_id or id of the subject observed in this imaging_series, i.e., a link to a record in the parent node.
     $ref: "_definitions.yaml#/to_one"
 
   datasets:

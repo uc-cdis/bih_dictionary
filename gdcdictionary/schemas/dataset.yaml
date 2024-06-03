@@ -8,7 +8,7 @@ namespace: https://imaging-hub.data-commons.org
 category: administrative
 program: '*'
 project: '*'
-description: A set of metadata and associated data file objects originating from single a research study, clinical trial or patient cohort.
+description: A set of metadata and associated data file objects originating from a single research study, clinical trial or patient cohort.
 additionalProperties: false
 submittable: true
 validators: null

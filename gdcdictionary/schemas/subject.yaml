@@ -1,14 +1,14 @@
 $schema: "http://json-schema.org/draft-04/schema#"
 
-id: "case"
-title: Case
+id: "subject"
+title: Subject
 type: object
 nodeTerms: null
 namespace: https://imaging-hub.data-commons.org
 category: administrative
 program: '*'
 project: '*'
-description: The collection of all data related to a specific patient or case in the context of a specific dataset or experiment.
+description: The collection of all data related to a specific patient, case, or subject in the context of a specific dataset or experiment.
 additionalProperties: false
 submittable: true
 validators: null
@@ -22,7 +22,7 @@ systemProperties:
 
 links:
   - name: datasets
-    backref: cases
+    backref: subjects
     label: member_of
     target_type: dataset
     multiplicity: many_to_many
@@ -63,5 +63,5 @@ properties:
     type: string
 
   datasets:
-    description: The submitter_id or id of the dataset this case belongs to, i.e., a link to a record in the parent node.
+    description: The submitter_id or id of the dataset this subject belongs to, i.e., a link to a record in the parent node.
     $ref: "_definitions.yaml#/to_many"
