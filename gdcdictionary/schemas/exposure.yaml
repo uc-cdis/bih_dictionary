@@ -96,8 +96,7 @@ properties:
     minimum: 0
 
   years_smoked_gt89:
-    term:
-      $ref: "_terms.yaml#/years_smoked_gt89"
+    description: Indicator of whether the number of years smoked is greater than 89 years.
     enum:
       - "Yes"
       - "No"
