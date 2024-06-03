@@ -50,7 +50,7 @@ properties:
 
   age_at_diagnosis_gt89:
     term:
-      $ref: "_terms.yaml#/age_at_diagnosis_gt89"
+      $ref: "_terms.yaml#/age_at_diagnosis"
     enum:
       - "Yes"
       - "No"
