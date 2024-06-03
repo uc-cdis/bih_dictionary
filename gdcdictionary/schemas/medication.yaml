@@ -1,14 +1,14 @@
 $schema: "http://json-schema.org/draft-04/schema#"
 
 id: "medication"
-title: Medication Use Record
+title: Medication
 type: object
-namespace: http://dcp.bionimbus.org/
+namespace: https://imaging-hub.data-commons.org
 category: clinical
 program: '*'
 project: '*'
 description: >
-  Recods about historical medication use
+  Records about historical medication use
 additionalProperties: false
 submittable: true
 validators: null
