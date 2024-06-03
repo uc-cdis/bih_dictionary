@@ -3,7 +3,7 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "exposure"
 title: Exposure
 type: object
-namespace: http://dcp.bionimbus.org/
+namespace: https://imaging-hub.data-commons.org
 category: clinical
 program: '*'
 project: '*'
@@ -45,7 +45,39 @@ uniqueKeys:
 properties:
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
-# HARMONIZED VARIABLES ACROSS GTEX AND TOPMED PROJECTS
+  # bloodpac props:
+  alcohol_history:
+    term:
+      $ref: "_terms.yaml#/alcohol_history"
+    type: string
+  alcohol_intensity:
+    term:
+      $ref: "_terms.yaml#/alcohol_intensity"
+    type: string
+  cigarettes_per_day:
+    term:
+      $ref: "_terms.yaml#/cigarettes_per_day"
+    type: number
+  tobacco_smoking_status:
+    term:
+      $ref: "_terms.yaml#/tobacco_smoking_status"
+    enum:
+      - "1"
+      - "2"
+      - "3"
+      - "4"
+      - "5"
+      - "6"
+      - "7"
+      - Unknown
+  years_smoked:
+    term:
+      $ref: "_terms.yaml#/years_smoked"
+    type: number
+    maximum: 89
+    minimum: 0
+
+#BDC:  HARMONIZED VARIABLES ACROSS GTEX AND TOPMED PROJECTS
   smoking_status:
     description: >
       Smoking condition (HARMONIZED)
@@ -64,8 +96,7 @@ properties:
     minimum: 0
 
   years_smoked_gt89:
-    term:
-      $ref: "_terms.yaml#/years_smoked_gt89"
+    description: Indicator of whether the number of years smoked is greater than 89 years.
     enum:
       - "Yes"
       - "No"

@@ -283,6 +283,15 @@ annotation_name:
     cde_version: null
     term_url: "https://www.midrc.org/annotations"
 
+assay_kit_name:
+  description: "The name of the kit used for the test or assay; please also indicate the kit vendor and version in 'assay_kit_vendor' and 'assay_kit_version'."
+
+assay_kit_vendor:
+  description: "The name of the vendor or manufacturer of the kit used for the test; please also indicate the kit name and version in 'assay_kit_name' and 'assay_kit_version'."
+
+assay_kit_version:
+  description: "The version of the kit used for the test; please also indicate the kit name and vendor in 'assay_kit_name' and 'assay_kit_vendor'."
+
 base_caller_name: # TOREVIEW
   description: >
     Name of the base caller.
@@ -669,6 +678,12 @@ ethnicity:
     cde_id: 2192217
     cde_version: 2.0
     term_url: "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2192217&version=2.0"
+
+equipment_manufacturer:
+  description: "The name of the manufacturer of the equipment used for the test; please also indicate the model number in 'equipment_model'."
+
+equipment_model:
+  description: "The equipment name and model number used for the test; please also indicate the manufacturer name in 'equipment_manufacturer'."
 
 experiment_name: # TOREVIEW
   description: >

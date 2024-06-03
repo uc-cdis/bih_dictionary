@@ -1,14 +1,14 @@
 $schema: "http://json-schema.org/draft-04/schema#"
 
 id: "cardiac_mri"
-title: Cardiac Magnetic Resonance Image
+title: Cardiac MRI
 type: object
-namespace: http://dcp.bionimbus.org/
+namespace: https://imaging-hub.data-commons.org
 category: clinical
 program: '*'
 project: '*'
 description: >
-  Cardiac MRI used to obtain measures of left ventricular mass, wall thickness, ejection fraction, cardiac output, aortic atherosclerosis, and aortic distensibility.
+  Cardiac Magnetic Resonance Image used to obtain measures of left ventricular mass, wall thickness, ejection fraction, cardiac output, aortic atherosclerosis, and aortic distensibility.
 additionalProperties: false
 submittable: true
 validators: null
