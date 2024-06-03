@@ -4,7 +4,7 @@ id: "imaging_study"
 title: Imaging Study
 type: object
 namespace: https://imaging-hub.data-commons.org
-category: medical_history
+category: medical_imaging
 program: '*'
 project: '*'
 description: Information related to an imaging study or exam done for diagnostic or research purposes, including patient clinical or contextual data recorded at the time of the imaging study.
@@ -20,10 +20,10 @@ systemProperties:
   - updated_datetime
 
 links:
-  - name: cases
+  - name: subjects
     backref: imaging_studies
     label: related_to
-    target_type: case
+    target_type: subject
     multiplicity: many_to_one
     required: true
   - name: datasets
@@ -36,7 +36,7 @@ links:
 required:
   - submitter_id
   - type
-  - cases
+  - subjects
   - datasets
 
 uniqueKeys:
@@ -79,10 +79,10 @@ properties:
     description: (0020, 000d) Study Instance UID
     type: string
 
-  cases:
-    description: The submitter_id or id of the case/patient observed in this imaging_study, i.e., a link to a record in the parent node.
+  subjects:
+    description: The submitter_id or id of the subject/patient observed in this imaging_study, i.e., a link to a record in the parent node.
     $ref: "_definitions.yaml#/to_one"
 
   datasets:
-    description: The submitter_id or id of the dataset this case belongs to, i.e., a link to a record in the parent node.
+    description: The submitter_id or id of the dataset this subject belongs to, i.e., a link to a record in the parent node.
     $ref: "_definitions.yaml#/to_many"
