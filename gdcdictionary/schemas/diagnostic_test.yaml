@@ -59,7 +59,7 @@ properties:
 
   assay_kit_name:
     term:
-      $ref: "_terms.yaml#/assay_kit_version"
+      $ref: "_terms.yaml#/assay_kit_name"
     type: string
 
   assay_kit_vendor:
