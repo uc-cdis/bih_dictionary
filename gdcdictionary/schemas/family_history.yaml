@@ -72,7 +72,7 @@ properties:
 
   relationship_age_at_diagnosis_gt89:
     term:
-      $ref: "_terms.yaml#/relationship_age_at_diagnosis_gt89"
+      $ref: "_terms.yaml#/relationship_age_at_diagnosis"
     enum:
       - "Yes"
       - "No"
