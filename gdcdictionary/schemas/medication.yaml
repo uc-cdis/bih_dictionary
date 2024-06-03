@@ -40,7 +40,52 @@ required:
 properties:
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
-# HARMONIZED VARIABLES ACROSS GTEX AND TOPMED PROJECTS
+## MIDRC props:
+
+  dose_sequence_number:
+    description: The sequence number of a specific dose of a medication given in a series of doses.
+    type: integer
+
+  medication_code:
+    description: The code for a specific medication, assigned by the code system.
+    type: string
+
+  medication_code_system:
+    description: The system that assigned the code for a specific medication.
+    type: string
+
+  medication_name:
+    description: The name of the specific medication the case was prescribed or administered.
+    type: string
+
+  medication_manufacturer:
+    description: The name of the company that manufactured the medication.
+    type: string
+
+  medication_type:
+    description: A categorization of medication used to describe the type of medication the patient was perscribed or administered.
+    enum:
+      - ACE inhibitors
+      - Bronchodilator
+      - Chemotherapy
+      - Immunosuppressive medication
+      - Immunotherapy
+      - Inhaled steroids
+      - NSAID
+      - Protease inhibitor
+      - Supplemental oxygen
+      - Systemic steroids
+      - Vaccine
+
+  days_to_medication_start:
+    description: The number of days from the index date to the date the case started a specific medication.
+    type: integer
+
+  days_to_medication_end:
+    description: The number of days from the index date to the date the case stopped a specific medication.
+    type: integer
+
+## BDC props: HARMONIZED VARIABLES ACROSS GTEX AND TOPMED PROJECTS
   hypertension_meds:
     description: >
       Take medication for hypertension (HARMONIZED)
