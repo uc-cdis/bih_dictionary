@@ -4,10 +4,10 @@ id: "observation"
 title: Observation
 type: object
 namespace: https://imaging-hub.data-commons.org
-category: medical_history
+category: clinical
 program: '*'
 project: '*'
-description: Information about the subject obtained in the context of examination, questioning orduring a procedure.
+description: Clinical facts about a subject obtained in the context of examination, questioning or a procedure. Any data that cannot be represented by any other domains, such as social and lifestyle facts, medical history, family history, etc. are recorded here. Observations differ from Measurements in that they do not require a standardized test or some other activity to generate clinical fact. Typical observations are medical history, family history, the stated need for certain treatment, social circumstances, lifestyle choices, healthcare utilization patterns, etc. If the generation clinical facts requires a standardized testing such as lab testing or imaging and leads to a standardized result, the data item is recorded in the MEASUREMENT table. If the clinical fact observed determines a sign, symptom, diagnosis of a disease or other medical condition, it is recorded in the CONDITION_OCCURRENCE table.
 additionalProperties: false
 submittable: true
 validators: null
@@ -40,17 +40,74 @@ properties:
 
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
-  observation_name:
-    description: The short of the observation about the subject obtained in the context of examination, questioning or a during procedure.
-    type: string
+  days_to_observation:
+    description: The number of days from the index_date to the date of the observation.
+    type: integer
 
   observation_answer:
     description: The answer or value provided for a specific observation about a subject obtained in the context of examination, questioning or a during procedure.
     type: string
 
-  days_to_observation:
-    description: The number of days from the index date to the date of the observation.
-    type: integer
+  observation_concept_id:
+    description: The OBSERVATION_CONCEPT_ID field is recommended for primary use in analyses, and must be used for network studies.	The CONCEPT_ID that the OBSERVATION_SOURCE_CONCEPT_ID maps to. There is no specified domain that the Concepts in this table must adhere to. The only rule is that records with Concepts in the Condition, Procedure, Drug, Measurement, or Device domains MUST go to the corresponding table.
+    type: string
+
+  observation_name:
+    description: The short of the observation about the subject obtained in the context of examination, questioning or a during procedure.
+    type: string
+
+  observation_source_concept_id:
+    description: This is the concept representing the OBSERVATION_SOURCE_VALUE and may not necessarily be standard. This field is discouraged from use in analysis because it is not required to contain Standard Concepts that are used across the OHDSI community, and should only be used when Standard Concepts do not adequately represent the source detail for the Observation necessary for a given analytic use case. Consider using OBSERVATION_CONCEPT_ID instead to enable standardized analytics that can be consistent across the network.	If the OBSERVATION_SOURCE_VALUE is coded in the source data using an OMOP supported vocabulary put the concept id representing the source value here.
+    type: string
+  
+  observation_source_value:
+    description: This field houses the verbatim value from the source data representing the Observation that occurred. For example, this could be an ICD10 or Read code.	This code is mapped to a Standard Concept in the Standardized Vocabularies and the original code is stored here for reference.
+    type: string
+  
+  observation_type_concept_id:
+    description: This field can be used to determine the provenance of the Observation record, as in whether the measurement was from an EHR system, insurance claim, registry, or other sources.	Choose the OBSERVATION_TYPE_CONCEPT_ID that best represents the provenance of the record, for example whether it came from an EHR record or billing claim. Accepted Concepts. A more detailed explanation of each Type Concept can be found on the OMOP vocabulary wiki.
+    type: string
+  
+  provider_id:
+    description: The provider associated with the observation record, e.g. the provider who ordered the test or the provider who recorded the result.	The ETL may need to make a choice as to which PROVIDER_ID to put here. Based on what is available this may or may not be different than the provider associated with the overall VISIT_OCCURRENCE record. For example the admitting vs attending physician on an EHR record.
+    type: string
+
+  qualifier_concept_id:
+    description: This field contains all attributes specifying the clinical fact further, such as as degrees, severities, drug-drug interaction alerts etc.	Use your best judgement as to what Concepts to use here and if they are necessary to accurately represent the clinical record. There is no restriction on the domain of these Concepts, they just need to be Standard.
+    type: string
+    
+  qualifier_source_value:
+    description: This field houses the verbatim value from the source data representing the qualifier of the Observation that occurred.	This code is mapped to a Standard Condition Concept in the Standardized Vocabularies and the original code is stored here for reference.
+    type: string
+
+  site_id:
+    description: The care site ID. 
+    type: string
+
+  unit_concept_id:
+    description: There is currently no recommended unit for individual observation concepts. UNIT_SOURCE_VALUES should be mapped to a Standard Concept in the Unit domain that best represents the unit as given in the source data.	There is no standardization requirement for units associated with OBSERVATION_CONCEPT_IDs, however, it is the responsibility of the ETL to choose the most plausible unit. If the source unit is NULL (applicable to cases when there's no numerical value or when it doesn't require a unit), keep unit_concept_id NULL as well. If there's no mapping of a source unit, populate unit_concept_id with 0.
+    type: string
+
+  unit_source_value:
+    description: This field houses the verbatim value from the source data representing the unit of the Observation that occurred.	This code is mapped to a Standard Condition Concept in the Standardized Vocabularies and the original code is stored here for reference.
+    type: string
+
+  value_as_concept_id:
+    description: It is possible that some records destined for the Observation table have two clinical ideas represented in one source code. This is common with ICD10 codes that describe a family history of some Condition, for example. In OMOP the Vocabulary breaks these two clinical ideas into two codes; one becomes the OBSERVATION_CONCEPT_ID and the other becomes the VALUE_AS_CONCEPT_ID. It is important when using the Observation table to keep this possibility in mind and to examine the VALUE_AS_CONCEPT_ID field for relevant information.	Note that the value of VALUE_AS_CONCEPT_ID may be provided through mapping from a source Concept which contains the content of the Observation. In those situations, the CONCEPT_RELATIONSHIP table in addition to the 'Maps to' record contains a second record with the relationship_id set to 'Maps to value'. For example, ICD10 Z82.4 'Family history of ischaemic heart disease and other diseases of the circulatory system' has a 'Maps to' relationship to 4167217 'Family history of clinical finding' as well as a 'Maps to value' record to 134057 'Disorder of cardiovascular system'. If there's no categorial result in a source_data, set value_as_concept_id to NULL, if there is a categorial result in a source_data but without mapping, set value_as_concept_id to 0.
+    type: string
+
+  value_as_number:
+    description: This is the numerical value of the Result of the Observation, if applicable and available. It is not expected that all Observations will have numeric results, rather, this field is here to house values should they exist.
+    type: number
+  
+  value_as_string:
+    description: This is the textual, categorical value of the Result of the Observation, if applicable and available.
+    type: string
+
+  value_source_value:	
+    description: This field houses the verbatim result value of the Observation from the source data. Do not get confused with the Observation_source_value which captures source value of the observation mapped to observation_concept_id. This field is the observation result value from the source.	If the observation_source_value was a question, for example, or an observation that requires a result then this field is the answer/ result from the source data. Store the verbatim value that represents the result of the observation_source_value.
+    type: string
 
   subjects:
     $ref: "_definitions.yaml#/to_one"
+

@@ -1,0 +1,187 @@
+$schema: "http://json-schema.org/draft-04/schema#"
+
+id: "drug_exposure"
+title: Drug Exposure
+type: object
+namespace: https://imaging-hub.data-commons.org
+category: clinical
+program: '*'
+project: '*'
+description: The drug exposure domain captures records about the utilization of a Drug when ingested or otherwise introduced into the body. A Drug is a biochemical substance formulated in such a way that when administered to a Person it will exert a certain physiological effect. Drugs include prescription and over-the-counter medicines, vaccines, and large-molecule biologic therapies. Radiological devices ingested or applied locally do not count as Drugs. Drug Exposure is inferred from clinical events associated with orders, prescriptions written, pharmacy dispensings, procedural administrations, and other patient-reported information. Prescriptions filled at dispensing providers such as pharmacies, and then captured in reimbursement claim systems, Drugs administered as part of a Procedure, such as chemotherapy or vaccines.
+additionalProperties: false
+submittable: true
+validators: null
+
+systemProperties:
+  - id
+  - project_id
+  - state
+  - created_datetime
+  - updated_datetime
+
+links:
+  - name: subjects
+    backref: drug_exposures
+    label: describes
+    target_type: subject
+    multiplicity: one_to_one
+    required: true
+
+uniqueKeys:
+  - [id]
+  - [project_id, submitter_id]
+
+required:
+  - submitter_id
+  - type
+  - subjects
+
+properties:
+  $ref: "_definitions.yaml#/ubiquitous_properties"
+
+  days_to_drug_exposure_end:
+    description: The difference in days between the subject's index_date and the end of their exposure to the Drug.
+    type: integer
+
+  days_to_drug_exposure_start:
+    description: The difference in days between the subject's index_date and the start of their exposure to the Drug.
+    type: integer
+
+  days_supply:
+    description: The number of days of supply of the medication as recorded in the original prescription or dispensing record.
+    type: integer
+
+  dose_sequence_number:
+    description: The sequence number of a specific dose of a medication given in a series of doses.
+    type: integer
+
+  dose_unit_concept_id:
+    description: A foreign key to a predefined concept in the Standardized Vocabularies reflecting the unit the effective_drug_dose value is expressed.
+    type: string
+
+  dose_unit_source_value:
+    description: The information about the dose unit as detailed in the source.
+    type: string
+
+  drug_code_system:
+    description: The system that assigned the code for a specific drug or medication.
+    type: string
+
+  drug_concept_id:
+    description: A foreign key that refers to a Standard Concept identifier in the Standardized Vocabularies for the Drug concept.
+    type: string
+
+  drug_manufacturer:
+    description: The name of the company that manufactured the drug or medication.
+    type: string
+
+  drug_name:
+    description: The name of the specific drug or medication the subject was prescribed or administered.
+    type: string
+
+  drug_source_concept_id:
+    description: A foreign key to a Drug Concept that refers to the code used in the source.
+    type: string
+
+  drug_source_value:
+    description: The source code for the Drug as it appears in the source data. This code is mapped to a Standard Drug concept in the Standardized Vocabularies and the original code is, stored here for reference.
+    type: string
+
+  drug_type:
+    description: A textual categorization of the type of medication the patient was perscribed or administered.
+    type: string
+
+  drug_type_concept_id:
+    description: A foreign key to the predefined Concept identifier in the Standardized Vocabularies reflecting the type of Drug Exposure recorded. It indicates how the Drug Exposure was represented in the source data.
+    type: string
+
+  effective_drug_dose:
+    description: Numerical value of Drug dose for this Drug Exposure record.
+    type: number
+
+  lot_number:
+    description: An identifier assigned to a particular quantity or lot of Drug product from the manufacturer.
+    type: string
+
+  provider_id:
+    description: A foreign key to the provider in the provider table who initiated (prescribed or administered) the Drug Exposure.
+    type: string
+
+  quantity:
+    description: The quantity of drug as recorded in the original prescription or dispensing record.
+    type: number
+    
+  refills:
+    description: The number of refills after the initial prescription. The initial prescription is not counted, values start with 0.
+    type: integer
+
+  route_concept_id:
+    description: A foreign key to a predefined concept in the Standardized Vocabularies reflecting the route of administration.
+    type: string
+
+  route_source_value:
+    description: The information about the route of administration as detailed in the source.
+    type: string
+
+  sig:
+    description: The directions or signetur on the Drug prescription as recorded in the original prescription and printed on the container or dispensing record.
+    type: string
+
+  site_id: The care site ID.
+    description: The site ID. 
+    type: string
+
+  stop_reason:
+    description: The reason the Drug was stopped. Reasons include regimen completed, changed, removed, etc.
+    type: string
+
+  visit_id:
+    description: A foreign key to the visit in the VISIT table during which the device was used.
+    type: string
+
+# ## BDC props: HARMONIZED VARIABLES ACROSS GTEX AND TOPMED PROJECTS
+#   age_at_antihypertensive_meds:
+#     description: Subject's age in years at measurement of antihypertensive_meds.
+#     type: number
+
+#   age_at_fasting_lipids:
+#     description: Age in years at measurement of fasting_lipids.
+#     type: number
+
+#   age_at_lipid_lowering_medication:
+#     description: Subject's age in years at measurement of age_at_lipid1c.
+#     type: number
+
+#   antihypertensive_meds:
+#     description: Indicator for use of antihypertensive medication at the time of blood pressure measurement.
+#     enum:
+#       - "Not taking antihypertensive medication"
+#       - "Taking antihypertensive medication"
+
+#   fasting_lipids:
+#     description: Indicates whether subject fasted for at least eight hours prior to blood draw to measure lipids phenotypes.
+#     type: boolean
+
+#   hypertension_meds:
+#     description: Subject takes medication for hypertension.
+#     type: boolean
+
+#   lipid_lowering_medication:
+#     description: Subject takes any lipid-lowering medication.
+#     type: boolean
+
+#   unit_antihypertensive_meds:
+#     description: Harmonization unit for antihypertensive_meds. A "harmonization unit" is a defined group of subjects whose phenotypes can be similarly processed.
+#     type: string
+
+#   unit_fasting_lipids:
+#     description: Harmonization unit for fasting_lipids. A "harmonization unit" is a defined group of subjects whose phenotypes can be similarly processed.
+#     type: string
+  
+#   unit_lipid_lowering_medication:
+#     description: Harmonization unit for unit_lipid1c. A "harmonization unit" is a defined group of subjects whose phenotypes can be similarly processed.
+#     type: string
+
+  subjects:
+    $ref: "_definitions.yaml#/to_one"
+

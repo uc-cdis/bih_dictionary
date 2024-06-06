@@ -1,0 +1,104 @@
+$schema: "http://json-schema.org/draft-04/schema#"
+
+id: "lifestyle_risk_factor"
+title: Lifestyle Risk Factor
+type: object
+namespace: https://imaging-hub.data-commons.org
+category: clinical
+program: '*'
+project: '*'
+description: >
+  Clinically recorded information about the subject's alcohol, tobacco, recreational drug use, and other lifestyle choices that are known disease risk factors.
+additionalProperties: false
+submittable: true
+validators: null
+
+systemProperties:
+  - id
+  - project_id
+  - state
+  - created_datetime
+  - updated_datetime
+
+links:
+  - name: subjects
+    backref: lifestyle_risk_factors
+    label: describes
+    target_type: subject
+    multiplicity: many_to_one
+    required: true
+
+required:
+  - type
+  - submitter_id
+  - subjects
+
+uniqueKeys:
+  - [id]
+  - [project_id, submitter_id]
+
+properties:
+  $ref: "_definitions.yaml#/ubiquitous_properties"
+
+  age_at_current_smoker_baseline:
+    description: Age in years at measurement of current_smoker_baseline.
+    type: number
+
+  age_at_ever_smoker_baseline:
+    description: Age in years at measurement of ever_smoker_baseline.
+    type: number
+
+  alcohol_history:
+    term:
+      $ref: "_terms.yaml#/alcohol_history"
+    type: string
+
+  alcohol_intensity:
+    term:
+      $ref: "_terms.yaml#/alcohol_intensity"
+    type: string
+
+  cigarettes_per_day:
+    term:
+      $ref: "_terms.yaml#/cigarettes_per_day"
+    type: number
+
+  current_smoker_baseline:
+    description: Indicates whether subject currently smokes cigarettes.
+    type: string
+
+  ever_smoker_baseline:
+    description: Indicates whether subject ever regularly smoked cigarettes.
+    type: string
+
+  tobacco_smoking_status:
+    description: Subject's tobacco smoking status.
+    enum:
+      - "NEVER"
+      - "FORMER"
+      - "CURRENT"
+
+  unit_current_smoker_baseline:
+    description: Harmonization unit for current_smoker_baseline. A "harmonization unit" is a defined group of subjects whose phenotypes can be similarly processed.
+    type: string
+
+  unit_ever_smoker_baseline:
+    description: Harmonization unit for ever_smoker_baseline. A "harmonization unit" is a defined group of subjects whose phenotypes can be similarly processed.
+    type: string
+
+  years_smoked:
+    term:
+      $ref: "_terms.yaml#/years_smoked"
+    type:
+      - number
+    maximum: 89
+    minimum: 0
+
+  years_smoked_gt89:
+    description: Indicator of whether the number of years smoked is greater than 89 years.
+    enum:
+      - "Yes"
+      - "No"
+
+  subjects:
+    $ref: "_definitions.yaml#/to_one"

@@ -3,7 +3,7 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "treatment"
 title: Treatment
 type: object
-namespace: https://imaging-hub.data-commons.org
+namespace: https://imaging-hub.data-commons.org # from BloodPAC
 category: clinical
 program: '*'
 project: '*'

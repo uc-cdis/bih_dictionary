@@ -54,6 +54,8 @@ properties:
     term:
       $ref: "_terms.yaml#/alcohol_intensity"
     type: string
+
+
   cigarettes_per_day:
     term:
       $ref: "_terms.yaml#/cigarettes_per_day"
@@ -76,6 +78,9 @@ properties:
     type: number
     maximum: 89
     minimum: 0
+
+
+
 
 #BDC:  HARMONIZED VARIABLES ACROSS GTEX AND TOPMED PROJECTS
   smoking_status:
@@ -132,6 +137,67 @@ properties:
     description: >
       harmonization unit for ever_smoker_baseline (A "harmonization unit" is a defined group of subjects whose phenotypes can be similarly processed.) (HARMONIZED)
     type: string
+
+
+
+
+## OMOP Device exposure
+The device exposure domain captures information about a person's exposure to a foreign physical object or instrument that which is used for diagnostic or therapeutic purposes through a mechanism beyond chemical action. Devices include implantable objects (e.g. pacemakers, stents, artificial joints), medical equipment and supplies (e.g. bandages, crutches, syringes), other instruments used in medical procedures (e.g. sutures, defibrillators) and material used in clinical care (e.g. adhesives, body material, dental material, surgical material).
+
+Field	Required	Type	Description
+device_exposure_id	Yes	integer	A system-generated unique identifier for each Device Exposure.
+person_id	Yes	integer	A foreign key identifier to the Person who is subjected to the Device. The demographic details of that person are stored in the Person table.
+device_concept_id	Yes	integer	A foreign key that refers to a Standard Concept identifier in the Standardized Vocabularies for the Device concept.
+device_exposure_start_date	Yes	date	The date the Device or supply was applied or used.
+device_exposure_start_datetime	No	datetime	The date and time the Device or supply was applied or used.
+device_exposure_end_date	No	date	The date the Device or supply was removed from use.
+device_exposure_end_datetime	No	datetime	The date and time the Device or supply was removed from use.
+device_type_concept_id	Yes	integer	A foreign key to the predefined Concept identifier in the Standardized Vocabularies reflecting the type of Device Exposure recorded. It indicates how the Device Exposure was represented in the source data.
+unique_device_id	No	varchar(50)	A UDI or equivalent identifying the instance of the Device used in the Person.
+quantity	No	integer	The number of individual Devices used for the exposure.
+provider_id	No	integer	A foreign key to the provider in the PROVIDER table who initiated of administered the Device.
+visit_occurrence_id	No	integer	A foreign key to the visit in the VISIT table during which the device was used.
+device_source_value	No	varchar(50)	The source code for the Device as it appears in the source data. This code is mapped to a standard Device Concept in the Standardized Vocabularies and the original code is stored here for reference.
+device_source_ concept_id	No	integer	A foreign key to a Device Concept that refers to the code used in the source.
+
+
+## OMOP Drug exposure
+The drug exposure domain captures records about the utilization of a Drug when ingested or otherwise introduced into the body. A Drug is a biochemical substance formulated in such a way that when administered to a Person it will exert a certain physiological effect. Drugs include prescription and over-the-counter medicines, vaccines, and large-molecule biologic therapies. Radiological devices ingested or applied locally do not count as Drugs.
+
+Drug Exposure is inferred from clinical events associated with orders, prescriptions written, pharmacy dispensings, procedural administrations, and other patient-reported information, for example:
+
+The “Prescription” section of an EHR captures prescriptions written by physicians or from electronic ordering systems
+The “Medication list” section of an EHR for both non-prescription products and medications prescribed by other providers
+Prescriptions filled at dispensing providers such as pharmacies, and then captured in reimbursement claim systems
+Drugs administered as part of a Procedure, such as chemotherapy or vaccines.
+Field	Required	Type	Description
+drug_exposure_id	Yes	integer	A system-generated unique identifier for each Drug utilization event.
+person_id	Yes	integer	A foreign key identifier to the person who is subjected to the Drug. The demographic details of that person are stored in the person table.
+drug_concept_id	Yes	integer	A foreign key that refers to a Standard Concept identifier in the Standardized Vocabularies for the Drug concept.
+drug_exposure_start_date	Yes	date	The start date for the current instance of Drug utilization. Valid entries include a start date of a prescription, the date a prescription was filled, or the date on which a Drug administration procedure was recorded.
+drug_exposure_start_datetime	No	datetime	The start date and time for the current instance of Drug utilization. Valid entries include a start date of a prescription, the date a prescription was filled, or the date on which a Drug administration procedure was recorded.
+drug_exposure_end_date	No	date	The end date for the current instance of Drug utilization. It is not available from all sources.
+drug_exposure_end_datetime	No	datetime	The end date and time for the current instance of Drug utilization. It is not available from all sources.
+drug_type_concept_id	Yes	integer	A foreign key to the predefined Concept identifier in the Standardized Vocabularies reflecting the type of Drug Exposure recorded. It indicates how the Drug Exposure was represented in the source data.
+stop_reason	No	varchar(20)	The reason the Drug was stopped. Reasons include regimen completed, changed, removed, etc.
+refills	No	integer	The number of refills after the initial prescription. The initial prescription is not counted, values start with 0.
+quantity	No	float	The quantity of drug as recorded in the original prescription or dispensing record.
+days_supply	No	integer	The number of days of supply of the medication as recorded in the original prescription or dispensing record.
+sig	No	clob	The directions (“signetur”) on the Drug prescription as recorded in the original prescription (and printed on the container) or dispensing record.
+route_concept_id	No	integer	A foreign key to a predefined concept in the Standardized Vocabularies reflecting the route of administration.
+effective_drug_dose	No	float	Numerical value of Drug dose for this Drug Exposure record.
+dose_unit_concept_ id	No	integer	A foreign key to a predefined concept in the Standardized Vocabularies reflecting the unit the effective_drug_dose value is expressed.
+lot_number	No	varchar(50)	An identifier assigned to a particular quantity or lot of Drug product from the manufacturer.
+provider_id	No	integer	A foreign key to the provider in the provider table who initiated (prescribed or administered) the Drug Exposure.
+visit_occurrence_id	No	integer	A foreign key to the visit in the visit table during which the Drug Exposure was initiated.
+drug_source_value	No	varchar(50)	The source code for the Drug as it appears in the source data. This code is mapped to a Standard Drug concept in the Standardized Vocabularies and the original code is, stored here for reference.
+drug_source_concept_id	No	integer	A foreign key to a Drug Concept that refers to the code used in the source.
+route_source_value	No	varchar(50)	The information about the route of administration as detailed in the source.
+dose_unit_source_value	No	varchar(50)	The information about the dose unit as detailed in the source.
+
+
+
+
 
   subjects:
     $ref: "_definitions.yaml#/to_one"

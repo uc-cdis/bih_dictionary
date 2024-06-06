@@ -38,6 +38,12 @@ links:
         target_type: read_group
         multiplicity: many_to_many
         required: false
+      - name: unaligned_reads_files
+        backref: aligned_reads_files
+        label: data_from
+        target_type: unaligned_reads_file
+        multiplicity: many_to_many
+        required: false
 
 required:
   - type

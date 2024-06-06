@@ -5,7 +5,7 @@ title: Condition
 type: object
 nodeTerms: null
 namespace: https://imaging-hub.data-commons.org
-category: medical_history
+category: clinical
 program: '*'
 project: '*'
 description: Information pertaining to relevant medical condition(s) of a case's subject (e.g., medical diagnoses, diseases, disorders, symptoms, injuries, illnesses, comorbidities) recorded in the process of clinical care (e.g., data extracted from the electronic medical record).
@@ -45,12 +45,36 @@ properties:
     description: The code for a specific codition, assigned by the code system.
     type: string
 
+condition_concept_id: 
+    description: The CONDITION_CONCEPT_ID field is recommended for primary use in analyses, and must be used for network studies. This is the standard concept mapped from the source value which represents a condition	The CONCEPT_ID that the CONDITION_SOURCE_VALUE maps to. Only records whose source values map to concepts with a domain of “Condition” should go in this table. Accepted Concepts. 
+    type: string
+
+condition_source_concept_id: 
+    description: This is the concept representing the condition source value and may not necessarily be standard. This field is discouraged from use in analysis because it is not required to contain Standard Concepts that are used across the OHDSI community, and should only be used when Standard Concepts do not adequately represent the source detail for the Condition necessary for a given analytic use case. Consider using CONDITION_CONCEPT_ID instead to enable standardized analytics that can be consistent across the network.	If the CONDITION_SOURCE_VALUE is coded in the source data using an OMOP supported vocabulary put the concept id representing the source value here. 
+    type: string
+
+condition_source_value: 
+    description: This field houses the verbatim value from the source data representing the condition that occurred. For example, this could be an ICD10 or Read code.	This code is mapped to a Standard Condition Concept in the Standardized Vocabularies and the original code is stored here for reference. 
+    type: string
+
   condition_code_system:
     description: The system that assigned the code for a specific condition.
     type: string
 
   condition_name:
     description: The name of the condition the patient has experienced.
+    type: string
+
+  condition_status_concept_id:
+    description: This concept represents the point during the visit the diagnosis was given (admitting diagnosis, final diagnosis), whether the diagnosis was determined due to laboratory findings, if the diagnosis was exclusionary, or if it was a preliminary diagnosis, among others.	Choose the Concept in the Condition Status domain that best represents the point during the visit when the diagnosis was given. These can include admitting diagnosis, principal diagnosis, and secondary diagnosis. Accepted Concepts.
+    type: string
+
+  condition_status_source_value:
+    description: This field houses the verbatim value from the source data representing the condition status.	This information may be called something different in the source data but the field is meant to contain a value indicating when and how a diagnosis was given to a patient. This source value is mapped to a standard concept which is stored in the CONDITION_STATUS_CONCEPT_ID field.
+    type: string
+
+  condition_type_concept_id:
+    description: This field can be used to determine the provenance of the Condition record, as in whether the condition was from an EHR system, insurance claim, registry, or other sources.	Choose the CONDITION_TYPE_CONCEPT_ID that best represents the provenance of the record. Accepted Concepts. A more detailed explanation of each Type Concept can be found on the vocabulary wiki.
     type: string
 
   days_to_condition_end:
@@ -60,6 +84,22 @@ properties:
   days_to_condition_start:
     description: The number of days from the index date to the date the subject was diagnosed with or began experiencing the condition.
     type: integer
+
+  provider_id: 
+    description: The provider associated with condition record, e.g. the provider who made the diagnosis or the provider who recorded the symptom.	The ETL may need to make a choice as to which PROVIDER_ID to put here. Based on what is available this may or may not be different than the provider associated with the overall VISIT_OCCURRENCE record, for example the admitting vs attending physician on an EHR record.
+    type: string
+
+  site_id: The care site ID.
+    description: The site ID. 
+    type: string
+
+  stop_reason: 
+    description: The Stop Reason indicates why a Condition is no longer valid with respect to the purpose within the source data. Note that a Stop Reason does not necessarily imply that the condition is no longer occurring.	This information is often not populated in source data and it is a valid etl choice to leave it blank if the information does not exist.
+    type: string
+
+  visit_id: 
+    description: The visit ID.
+    type: string
 
   subjects:
     description: The submitter_id or id of the case this condition describes, i.e., a link to a record in the parent node.

@@ -5,10 +5,10 @@ title: Procedure
 type: object
 nodeTerms: null
 namespace: https://imaging-hub.data-commons.org
-category: medical_history
+category: clinical
 program: '*'
 project: '*'
-description: Activities or processes ordered by and/or carried out by a healthcare provider on the patient with diagnostic and/or therapeutic purposes.
+description: Records of activities or processes ordered by, or carried out by, a healthcare provider on the patient with a diagnostic or therapeutic purpose.
 additionalProperties: false
 submittable: true
 validators: null
@@ -50,7 +50,7 @@ properties:
 
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
-  breathing_support_type:
+  breathing_support_type: # from MIDRC
     description: The type of breathing support the patient received.
     type: string
 
@@ -62,10 +62,53 @@ properties:
     description: The number of days between the case's index date and the end date of the procedure.
     type: integer  
 
+  modifier_concept_id:
+    description: The modifiers are intended to give additional information about the procedure but as of now the vocabulary is under review.	It is up to the ETL to choose how to map modifiers if they exist in source data. These concepts are typically distinguished by 'Modifier' concept classes (e.g., 'CPT4 Modifier' as part of the 'CPT4' vocabulary). If there is more than one modifier on a record, one should be chosen that pertains to the procedure rather than provider. Accepted Concepts.
+    type: string
+
+  modifier_source_value:
+    description: This field houses the verbatim value from the source data representing the modifier code for the procedure that occurred.	The value stored here is mapped to a MODIFIER_CONCEPT_ID.
+    type: string
+
+  procedure_concept_id:
+    description: The PROCEDURE_CONCEPT_ID field is recommended for primary use in analyses, and must be used for network studies. This is the standard concept mapped from the source value which represents a procedure	The CONCEPT_ID that the PROCEDURE_SOURCE_VALUE maps to. Only records whose source values map to standard concepts with a domain of “Procedure” should go in this table. Accepted Concepts.
+    type: string
+
   procedure_name:
-    description: The name of the procedure performed.
-    enum:
-      - Breathing Support
+    description: The textual categorization of the procedure performed.
+    type: string
+
+  procedure_occurrence_id:
+    description: The unique key given to a procedure record for a person. Refer to the ETL for how duplicate procedures during the same visit were handled.	Each instance of a procedure occurrence in the source data should be assigned this unique key. In some cases, a person can have multiple records of the same procedure within the same visit. It is valid to keep these duplicates and assign them individual, unique, PROCEDURE_OCCURRENCE_IDs, though it is up to the ETL how they should be handled.
+    type: string
+
+  procedure_source_concept_id:
+    description: This is the concept representing the procedure source value and may not necessarily be standard. This field is discouraged from use in analysis because it is not required to contain Standard Concepts that are used across the OHDSI community, and should only be used when Standard Concepts do not adequately represent the source detail for the Procedure necessary for a given analytic use case. Consider using PROCEDURE_CONCEPT_ID instead to enable standardized analytics that can be consistent across the network.	If the PROCEDURE_SOURCE_VALUE is coded in the source data using an OMOP supported vocabulary put the concept id representing the source value here.
+    type: string
+
+  procedure_source_value:
+    description: This field houses the verbatim value from the source data representing the procedure that occurred. For example, this could be an CPT4 or OPCS4 code.	Use this value to look up the source concept id and then map the source concept id to a standard concept id.
+    type: string
+
+  procedure_type_concept_id:
+    description: This field can be used to determine the provenance of the Procedure record, as in whether the procedure was from an EHR system, insurance claim, registry, or other sources.	Choose the PROCEDURE_TYPE_CONCEPT_ID that best represents the provenance of the record, for example whether it came from an EHR record or billing claim. If a procedure is recorded as an EHR encounter, the PROCEDURE_TYPE_CONCEPT would be 'EHR encounter record'. Accepted Concepts. A more detailed explanation of each Type Concept can be found on the vocabulary wiki.
+    type: string
+
+  provider_id:
+    description: The provider associated with the procedure record, e.g. the provider who performed the Procedure.	The ETL may need to make a choice as to which PROVIDER_ID to put here. Based on what is available this may or may not be different than the provider associated with the overall VISIT_OCCURRENCE record, for example the admitting vs attending physician on an EHR record.
+    type: string
+
+  quantity:
+    description: If the quantity value is omitted, a single procedure is assumed.	If a Procedure has a quantity of '0' in the source, this should default to '1' in the ETL. If there is a record in the source it can be assumed the exposure occurred at least once.
+    type: string
+
+  site_id:
+    description: The care site ID. 
+    type: string
+
+  visit_id:
+    description: A foreign key to the visit in the VISIT table during which the device was used.
+    type: string
 
   conditions:
     description: The submitter_id or id of the condition to which this procedure is related, i.e., a link to a record in the parent node.
@@ -74,3 +117,4 @@ properties:
   subjects:
     description: The submitter_id or id of the case to which this procedure is related, i.e., a link to a record in the parent node.
     $ref: "_definitions.yaml#/to_one"
+

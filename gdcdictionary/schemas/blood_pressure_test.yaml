@@ -71,6 +71,5 @@ properties:
       harmonization unit for bp_diastolic (A "harmonization unit" is a defined group of subjects whose phenotypes can be similarly processed.)
     type: string
 
-
   subjects:
     $ref: "_definitions.yaml#/to_one"
