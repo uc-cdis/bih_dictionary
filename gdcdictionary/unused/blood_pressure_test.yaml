@@ -1,3 +1,5 @@
+# merged into Measurement node
+# from BDC
 $schema: "http://json-schema.org/draft-04/schema#"
 
 id: "blood_pressure_test"

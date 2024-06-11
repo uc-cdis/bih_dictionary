@@ -53,7 +53,7 @@ properties:
     type: string
 
   observation_name:
-    description: The short of the observation about the subject obtained in the context of examination, questioning or a during procedure.
+    description: The short name of the observation about the subject obtained in the context of examination, questioning or a during procedure.
     type: string
 
   observation_source_concept_id:
@@ -111,3 +111,210 @@ properties:
   subjects:
     $ref: "_definitions.yaml#/to_one"
 
+
+  ## From BloodPAC / BioData Catalyst "exposure" nodes; smoking/tobacco status questions
+  age_at_current_smoker_baseline: ## From BDC "exposure" node
+    description: Age in years at measurement of current_smoker_baseline.
+    type: number
+
+  age_at_ever_smoker_baseline: ## From BDC "exposure" node
+    description: Age in years at measurement of ever_smoker_baseline.
+    type: number
+
+  alcohol_history: ## From BloodPAC "exposure" node
+    term:
+      $ref: "_terms.yaml#/alcohol_history"
+    type: string
+
+  alcohol_intensity: ## From BloodPAC "exposure" node
+    term:
+      $ref: "_terms.yaml#/alcohol_intensity"
+    type: string
+
+  cigarettes_per_day: ## From BloodPAC "exposure" node
+    term:
+      $ref: "_terms.yaml#/cigarettes_per_day"
+    type: number
+
+  current_smoker_baseline: ## From BDC "exposure" node
+    description: Indicates whether subject currently smokes cigarettes.
+    type: string
+
+  ever_smoker_baseline: ## From BDC "exposure" node
+    description: Indicates whether subject ever regularly smoked cigarettes.
+    type: string
+
+  tobacco_smoking_status: ## From BDC/BloodPAC "exposure" node
+    description: Subject's tobacco smoking status.
+    type: string
+    # enum:
+    #   - "Never"
+    #   - "Former"
+    #   - "Current"
+
+  unit_current_smoker_baseline: ## From BDC "exposure" node
+    description: Harmonization unit for current_smoker_baseline. A "harmonization unit" is a defined group of subjects whose phenotypes can be similarly processed.
+    type: string
+
+  unit_ever_smoker_baseline: ## From BDC "exposure" node
+    description: Harmonization unit for ever_smoker_baseline. A "harmonization unit" is a defined group of subjects whose phenotypes can be similarly processed.
+    type: string
+
+  years_smoked: ## From BDC/BloodPAC "exposure" node
+    term:
+      $ref: "_terms.yaml#/years_smoked"
+    type:
+      - number
+    maximum: 89
+    minimum: 0
+
+  years_smoked_gt89: ## From BDC "exposure" node
+    description: Indicator of whether the number of years smoked is greater than 89 years.
+    enum:
+      - "Yes"
+      - "No"
+
+  ## From BloodPAC "family_history" node
+  relative_with_cancer_history: ## From BloodPAC "family_history" node
+    term:
+      $ref: "_terms.yaml#/relative_with_cancer_history"
+    enum:
+      - "Yes"
+      - "No"
+      - Unknown
+      - Not Reported
+
+  relationship_type: ## From BloodPAC "family_history" node
+    term:
+      $ref: "_terms.yaml#/relationship_type"
+    type: string
+
+  relationship_gender: ## From BloodPAC "family_history" node
+    term:
+      $ref: "_terms.yaml#/gender"
+    enum:
+      - Female
+      - Male
+      - Unknown
+      - Unspecified
+      - Not Reported
+
+  relationship_age_at_diagnosis: ## From BloodPAC "family_history" node
+    term:
+      $ref: "_terms.yaml#/relationship_age_at_diagnosis"
+    type: integer
+    maximum: 89
+    minimum: 0
+
+  relationship_age_at_diagnosis_gt89: ## From BloodPAC "family_history" node
+    term:
+      $ref: "_terms.yaml#/relationship_age_at_diagnosis"
+    enum:
+      - "Yes"
+      - "No"
+
+  relationship_primary_diagnosis: ## From BloodPAC "family_history" node
+    term:
+      $ref: "_terms.yaml#/primary_diagnosis"
+    type: string
+
+
+### From BloodPAC "followup" node
+  adverse_event: ### From BloodPAC "followup" node
+    description: "Text that represents the Common Terminology Criteria for Adverse Events low level term name for an adverse event."
+    type: string
+
+  bmi: ### From BloodPAC "followup" node
+    description: "The body mass divided by the square of the body height expressed in units of kg/m^2."
+    type: number
+
+  cause_of_response: ### From BloodPAC "followup" node
+    description: >
+      A specific regimen or line of therapy responsible for the patient's observed improvement
+      achived at a certain point in time during a patient's treatment protocol.
+    type: string
+
+  # days_to_adverse_event: ### From BloodPAC "followup" node
+  #   description: "Number of days between the date used for index and the date the patient had an adverse event."
+  #   type: integer
+
+  # days_to_followup: ### From BloodPAC "followup" node
+  #   description: "Number of days between the date used for index and the date the patient was seen or contacted at follow-up."
+  #   type: integer
+
+  # days_to_progression: ### From BloodPAC "followup" node
+  #   description: "Number of days between the date used for index and the date the patient was diagnosed with progression of disease."
+  #   type: integer
+
+  # days_to_recurrence: ### From BloodPAC "followup" node
+  #   description: "Number of days between the date used for index and the date the patient was diagnosed with a recurrent malignancy."
+  #   type: integer
+
+  disease_response: ### From BloodPAC "followup" node
+    description: "The observed improvement achieved at a certain point in time during a patient's treatment protocol."
+    type: string
+ 
+  ecog_performance_status: ### From BloodPAC "followup" node
+    description: "The ECOG functional performance status of the patient/participant."
+    enum:
+      - "0"
+      - "1"
+      - "2"
+      - "3"
+      - "4"
+      - "5"
+
+  height: ### From BloodPAC "followup" node
+    description: "The height of the patient in centimeters."
+    type: number
+
+  progression_or_recurrence: ### From BloodPAC "followup" node
+    description: "Indicator to identify whether a patient has had a recurrent or relapsed malignancy or a progression of disease."
+    enum:
+      - "Yes"
+      - "No"
+      - Unknown
+
+  time_from_alcohol: ### From BloodPAC "followup" node
+    description: >
+      Hours since the patient last consumed alcohol.
+    type: number
+
+  time_from_exercise: ### From BloodPAC "followup" node
+    description: >
+      Hours since the patient last exercised.
+    type: number
+
+  time_from_food: ### From BloodPAC "followup" node
+    description: >
+      Hours since the patient last consumed food.
+    type: number
+
+  time_from_physical_trauma: ### From BloodPAC "followup" node
+    description: >
+      Hours since the patient last experienced physical trauma.
+    type: number
+
+  time_from_biopsy: ### From BloodPAC "followup" node
+    description: >
+      Hours since the patient last underwent a biopsy; please record the biopsy information in the 'diagnostic_test' node and link that record to this followup record.
+    type: number
+
+  time_from_recreational_drugs: ### From BloodPAC "followup" node
+    description: >
+      Hours since the patient last used recreational drugs.
+    type: number
+
+  time_from_tobacco: ### From BloodPAC "followup" node
+    description: >
+      Hours since the patient last used tobacco.
+    type: number
+
+  time_from_treatment: ### From BloodPAC "followup" node
+    description: >
+      Hours since the patient received a treatment, including surgical procedures or medications; please record the treatment information in the 'treatment' node and link that record to this followup record.
+    type: number
+
+  weight: ### From BloodPAC "followup" node
+    description: "The weight of the patient measured in kilograms."
+    type: number
