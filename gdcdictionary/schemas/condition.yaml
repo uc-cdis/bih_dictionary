@@ -89,7 +89,7 @@ properties:
     description: The provider associated with condition record, e.g. the provider who made the diagnosis or the provider who recorded the symptom.	The ETL may need to make a choice as to which PROVIDER_ID to put here. Based on what is available this may or may not be different than the provider associated with the overall VISIT_OCCURRENCE record, for example the admitting vs attending physician on an EHR record.
     type: string
 
-  site_id: The care site ID.
+  site_id:
     description: The site ID. 
     type: string
 

@@ -127,8 +127,8 @@ properties:
     description: The directions or signetur on the Drug prescription as recorded in the original prescription and printed on the container or dispensing record.
     type: string
 
-  site_id: The care site ID.
-    description: The site ID. 
+  site_id:
+    description: The care site ID.
     type: string
 
   stop_reason:
