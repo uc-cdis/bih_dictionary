@@ -60,7 +60,7 @@ properties:
 
 ## OMOP props
   admitted_from_concept_id:
-    description: Use this field to determine where the patient was admitted from. This concept is part of the visit domain and can indicate if a patient was admitted to the hospital from a long-term care facility, for example.	If available, map the admitted_from_source_value to a standard concept in the visit domain.  If a person was admitted from home or was self-referred, set this to 0.
+    description: Use this field to determine where the patient was admitted from. This concept is part of the visit domain and can indicate if a patient was admitted to the hospital from a long-term care facility, for example. If available, map the admitted_from_source_value to a standard concept in the visit domain. If a person was admitted from home or was self-referred, set this to 0.
     type: string
 
   admitted_from_source_value:
