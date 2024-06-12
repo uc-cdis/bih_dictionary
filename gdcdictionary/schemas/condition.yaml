@@ -109,6 +109,7 @@ properties:
   comorbidity: ## From BloodPAC "comorbidity" node
     description: >
       Text term to identify a coexistent disease or condition in a person.
+    type: string
 
 
   ### From BloodPAC "diagnosis" node
