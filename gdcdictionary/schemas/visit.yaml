@@ -60,7 +60,7 @@ properties:
 
 ## OMOP props
   admitted_from_concept_id:
-    description: Use this field to determine where the patient was admitted from. This concept is part of the visit domain and can indicate if a patient was admitted to the hospital from a long-term care facility, for example.	If available, map the admitted_from_source_value to a standard concept in the visit domain.  If a person was admitted from home or was self-referred, set this to 0.
+    description: Use this field to determine where the patient was admitted from. This concept is part of the visit domain and can indicate if a patient was admitted to the hospital from a long-term care facility, for example. If available, map the admitted_from_source_value to a standard concept in the visit domain. If a person was admitted from home or was self-referred, set this to 0.
     type: string
 
   admitted_from_source_value:
@@ -76,7 +76,7 @@ properties:
     type: string
 
   discharged_to_concept_id:
-    description: Use this field to determine where the patient was discharged to after a visit. This concept is part of the visit domain and can indicate if a patient was transferred to another hospital or sent to a long-term care facility, for example. It is assumed that a person is discharged to home therefore there is not a standard concept id for “home”. Use concept id = 0 when a person is discharged to home.	If available, map the discharged_to_source_value to a standard concept in the visit domain. 
+    description: Use this field to determine where the patient was discharged to after a visit. This concept is part of the visit domain and can indicate if a patient was transferred to another hospital or sent to a long-term care facility, for example. It is assumed that a person is discharged to home therefore there is not a standard concept id for “home”. Use concept id = 0 when a person is discharged to home. If available, map the discharged_to_source_value to a standard concept in the visit domain.
     type: string
 
   discharged_to_source_value:
@@ -84,11 +84,11 @@ properties:
     type: string
 
   preceding_visit_occurrence_id:
-    description: Use this field to find the visit that occurred for the person prior to the given visit. There could be a few days or a few years in between.	This field can be used to link a visit immediately preceding the current visit. Note this is not symmetrical, and there is no such thing as a “following_visit_id”.
+    description: Use this field to find the visit that occurred for the person prior to the given visit. There could be a few days or a few years in between. This field can be used to link a visit immediately preceding the current visit. Note this is not symmetrical, and there is no such thing as a “following_visit_id”.
     type: string
 
   provider_id:
-    description: There will only be one provider per visit record and the ETL document should clearly state how they were chosen (attending, admitting, etc.). If there are multiple providers associated with a visit in the source, this can be reflected in the event tables (CONDITION_OCCURRENCE, PROCEDURE_OCCURRENCE, etc.) or in the VISIT_DETAIL table.	If there are multiple providers associated with a visit, you will need to choose which one to put here. The additional providers can be stored in the VISIT_DETAIL table.
+    description: There will only be one provider per visit record and the ETL document should clearly state how they were chosen (attending, admitting, etc.). If there are multiple providers associated with a visit in the source, this can be reflected in the event tables (CONDITION_OCCURRENCE, PROCEDURE_OCCURRENCE, etc.) or in the VISIT_DETAIL table. If there are multiple providers associated with a visit, you will need to choose which one to put here. The additional providers can be stored in the VISIT_DETAIL table.
     type: string
 
   site_id:
@@ -96,7 +96,7 @@ properties:
     type: string
 
   visit_concept_id:
-    description: This field contains a concept id representing the kind of visit, like inpatient or outpatient. All concepts in this field should be standard and belong to the Visit domain.	Populate this field based on the kind of visit that took place for the person. For example this could be “Inpatient Visit”, “Outpatient Visit”, “Ambulatory Visit”, etc. This table will contain standard concepts in the Visit domain. These concepts are arranged in a hierarchical structure to facilitate cohort definitions by rolling up to generally familiar Visits adopted in most healthcare systems worldwide. 
+    description: This field contains a concept id representing the kind of visit, like inpatient or outpatient. All concepts in this field should be standard and belong to the Visit domain. Populate this field based on the kind of visit that took place for the person. For example this could be “Inpatient Visit”, “Outpatient Visit”, “Ambulatory Visit”, etc. This table will contain standard concepts in the Visit domain. These concepts are arranged in a hierarchical structure to facilitate cohort definitions by rolling up to generally familiar Visits adopted in most healthcare systems worldwide. 
     type: string
 
   visit_source_concept_id:
@@ -104,11 +104,11 @@ properties:
     type: string
 
   visit_source_value:
-    description: This field houses the verbatim value from the source data representing the kind of visit that took place (inpatient, outpatient, emergency, etc.)	If there is information about the kind of visit in the source data that value should be stored here. If a visit is an amalgamation of visits from the source then use a hierarchy to choose the visit source value, such as IP -> ER-> OP. This should line up with the logic chosen to determine how visits are created.
+    description: This field houses the verbatim value from the source data representing the kind of visit that took place (inpatient, outpatient, emergency, etc.) If there is information about the kind of visit in the source data that value should be stored here. If a visit is an amalgamation of visits from the source then use a hierarchy to choose the visit source value, such as IP -> ER-> OP. This should line up with the logic chosen to determine how visits are created.
     type: string
 
   visit_type_concept_id:
-    description: Use this field to understand the provenance of the visit record, or where the record comes from.	Populate this field based on the provenance of the visit record, as in whether it came from an EHR record or billing claim.  A more detailed explanation of each Type Concept can be found on the vocabulary wiki.
+    description: Use this field to understand the provenance of the visit record, or where the record comes from. Populate this field based on the provenance of the visit record, as in whether it came from an EHR record or billing claim.  A more detailed explanation of each Type Concept can be found on the vocabulary wiki.
     type: string
 
   subjects:

@@ -1,3 +1,4 @@
+## From BloodPAC/MIDRC; merged into Measurement node
 schema: "http://json-schema.org/draft-04/schema#"
 
 id: "diagnostic_test"
@@ -57,6 +58,7 @@ properties:
     description: The name of the test for which this measurement was the result.
     enum:
       - COVID-19
+
   test_result_text: # from MIDRC measurement
     description: The measured result of the test described using a list of enumerations.
     enum:

@@ -61,8 +61,8 @@ properties:
     description: A foreign key to the concept that refers to the code used in the source. Note, this variable name is abbreviated to ensure it will be allowable across database platforms.
     type: string
 
-  site_id: The site ID.
-    description: The site ID. 
+  site_id:
+    description: The care site ID. 
     type: string
 
   subjects:
