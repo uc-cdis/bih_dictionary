@@ -4,7 +4,7 @@ id: "aligned_reads_file"
 title: Aligned Reads File
 type: object
 namespace: https://imaging-hub.data-commons.org
-category: data_file
+category: file_metadata
 program: '*'
 project: '*'
 description: >

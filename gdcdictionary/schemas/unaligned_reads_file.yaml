@@ -4,7 +4,7 @@ id: "unaligned_reads_file"
 title: Unaligned Reads File
 type: object
 namespace: https://imaging-hub.data-commons.org
-category: data_file
+category: file_metadata
 program: '*'
 project: '*'
 description: "Data file containing unaligned reads, e.g., a FASTQ file."

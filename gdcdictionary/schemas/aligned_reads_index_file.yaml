@@ -4,7 +4,7 @@ id: "aligned_reads_index_file"
 title: Aligned Reads Index File
 type: object
 namespace: https://imaging-hub.data-commons.org
-category: index_file
+category: file_metadata
 program: '*'
 project: '*'
 description: "Data file containing the index for a set of aligned reads, e.g., a BAI file."

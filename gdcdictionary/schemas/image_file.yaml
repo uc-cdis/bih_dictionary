@@ -4,7 +4,7 @@ id: "image_file"
 title: Image File
 type: object
 namespace: https://imaging-hub.data-commons.org
-category: data_file
+category: file_metadata
 program: '*'
 project: '*'
 description: >
