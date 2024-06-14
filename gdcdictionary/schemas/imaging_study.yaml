@@ -47,18 +47,28 @@ properties:
 
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
+## Non-DICOM properties
+  disease_type:
+    description: The primary type of disease studied in this imaging study, if applicable.
+    type: string
+
+  primary_site:
+    description: The primary body site studied in this imaging study.
+    type: string
+
+## DICOM properties
   BodyPartExamined:
     description: (0018, 0015) Body Part Examined.
     type: array
     items:
       type: string
 
-  disease_type:
-    description: The primary type of disease studied in this imaging study, if applicable.
-    type: string
+  # EthnicGroup: # use subject.ethnicity
+  #   description: (0010,2160) The ethnic group to which the patient belongs.
+  #   type: string
 
-  Modality:
-    description: The modalities of the imaging study; derived from (0008, 0060) Modality.
+  study_modality:
+    description: The list of modalities in the imaging study; derived from (0008, 0060) Modality.
     type: array
     items:
       type: string
@@ -66,10 +76,14 @@ properties:
   PatientAge:
     description: (0010,1010) The patient's age at the time of the imaging study.
     type: number
-  
-  primary_site:
-    description: The primary body site studied in this imaging study.
-    type: string
+
+  # PatientID: # use subject.submitter_id
+  #   description: (0010,0020) A unique identifier for the patient.
+  #   type: string
+
+  # PatientSex: # use subject.gender
+  #   description: (0010,0040) the patient's sex; the biologic character or quality that distinguishes male and female from one another as expressed by analysis of the person's gonadal, morphologic  (internal and external), chromosomal, and hormonal characteristics 
+  #   type: string
 
   StudyDescription:
     description: (0008, 1030) Study Description.
