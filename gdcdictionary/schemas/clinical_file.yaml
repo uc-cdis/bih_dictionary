@@ -1,0 +1,96 @@
+$schema: "http://json-schema.org/draft-04/schema#"
+
+id: "clinical_file"
+title: Clinical File
+type: object
+namespace: https://data.midrc.org
+category: file_metadata
+program: '*'
+project: '*'
+description: >
+  Clinical supplementary files associated with a study containing raw clinical data.
+additionalProperties: false
+submittable: true
+validators: null
+
+systemProperties:
+  - id
+  - project_id
+  - state
+  - created_datetime
+  - updated_datetime
+  - file_state
+  - error_type
+
+links:
+  - exclusive: false
+    required: true
+    subgroup:
+      - name: core_metadata_collections
+        backref: clinical_files
+        label: data_from
+        target_type: core_metadata_collection
+        multiplicity: many_to_one
+        required: false
+      - name: datasets
+        backref: clinical_files
+        label: refers_to
+        target_type: dataset
+        multiplicity: many_to_one
+        required: false
+      - name: subjects
+        backref: clinical_files
+        label: refers_to
+        target_type: subject
+        multiplicity: many_to_one
+        required: false
+
+uniqueKeys:
+  - [id]
+  - [project_id, submitter_id]
+
+required:
+  - submitter_id
+  - type
+
+uniqueKeys:
+  - [ id ]
+  - [ project_id, submitter_id ]
+
+properties:
+  $ref: "_definitions.yaml#/ubiquitous_properties"
+
+  file_description:
+    description: >
+      Free text to expand upon details for this file
+    type: string
+
+  data_type:
+    description: "The type of supplementary file, for example, figures, tables, clinical data, notes, publications, summary statistics, etc."
+    type: string
+
+  data_category:
+    description: "The text term describing the broad category that the supplementary file falls into."
+    type: string
+
+  data_format:
+    description: "The text term describing the file format of the supplementary file, for example, PDF, XLSX, JPEG, PNG, TSV, etc."
+    type: string
+
+  object_ids:
+    description: The list of file identifiers (object_ids, DRS URIs, or data GUIDs, etc.) for the file(s), if applicable.
+    type: array
+    items:
+      type: string
+
+  core_metadata_collections:
+    description: The submitter_id or id of the core_metadata_collection to which the supplementary file belongs, i.e., a link to a record in the parent node.
+    $ref: "_definitions.yaml#/to_many"
+
+  datasets:
+    description: The submitter_id or id of the dataset to which the supplementary file belongs, i.e., a link to a record in the parent node.
+    $ref: "_definitions.yaml#/to_many"
+
+  subjects:
+    description: The submitter_id or id of the subject to which the supplementary file belongs, i.e., a link to a record in the parent node.
+    $ref: "_definitions.yaml#/to_many"

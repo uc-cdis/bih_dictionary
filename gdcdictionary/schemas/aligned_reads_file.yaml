@@ -4,7 +4,7 @@ id: "aligned_reads_file"
 title: Aligned Reads File
 type: object
 namespace: https://imaging-hub.data-commons.org
-category: data_file
+category: file_metadata
 program: '*'
 project: '*'
 description: >
@@ -48,19 +48,13 @@ links:
 required:
   - type
   - submitter_id
-  - file_name
-  - file_size
-  - md5sum
-  - data_category
-  - data_type
-  - data_format
 
 uniqueKeys:
   - [ id ]
   - [ project_id, submitter_id ]
 
 properties:
-  $ref: "_definitions.yaml#/data_file_properties"
+  $ref: "_definitions.yaml#/ubiquitous_properties"
 
   alignment_workflow_type:
     description: The workflow used to align the sequencing reads, e.g., STAR, BWA-aln, BWA-mem, spinakker, etc.
@@ -109,6 +103,12 @@ properties:
     #   - Total RNA-Seq
     #   - Amplicon
     #   - Other
+
+  object_ids:
+    description: The list of file identifiers (object_ids, DRS URIs, or data GUIDs, etc.) for the file(s), if applicable.
+    type: array
+    items:
+      type: string
 
   read_groups:
     $ref: "_definitions.yaml#/to_many"

@@ -41,14 +41,30 @@ properties:
 
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
-# BloodPAC props:
+#   PatientID: # use subject.submitter_id
+#     description: (0010,0020) A unique identifier for the patient.
+#     type: string
+
+  age_at_index:
+    description: The study participant's age, in years, at the index event. The index event is determined by the data submitter and used as an anchor date for all temporal variables. Note that an age of 0 indicates a participant who is younger than 1 year old. For participants with ages greater than 89 years, please use the property 'age_at_index_gt89'.
+    type: number
+    maximum: 89
+    minimum: 0
+
+  age_at_index_gt89:
+    description: Indicates whether the subject's age at the time of the study was greater than 89 years.
+    enum:
+      - "Yes"
+      - "No"
+
   cause_of_death:
     description: >
       Text term to identify the cause of patient death with respect to cancer.
-    enum:
-      - "Cancer Related"
-      - "Not Cancer Related"
-      - "Unknown"
+    type: string
+
+  country_of_residence:
+    description: The country where the subject resides.
+    type: string
 
   days_to_birth:
     description: >
@@ -65,379 +81,47 @@ properties:
       - "No"
 
   days_to_death:
-    description: >
-      The number of days between the index date and the date of patient death.
+    description: The difference in days between the subject's index_date and the date the subject was deceased. 
     type: integer
+    maximum: 32872
+    minimum: 0
 
   ethnicity:
     term:
       $ref: "_terms.yaml#/ethnicity"
-    enum:
-      - "Hispanic or Latino"
-      - "Not Hispanic or Latino"
-      - "Unknown"
+    type: string
+#   EthnicGroup: # use subject.ethnicity
+#     description: (0010,2160) The ethnic group to which the patient belongs.
+#     type: string
 
   gender:
     term:
       $ref: "_terms.yaml#/gender"
-    enum:
-      - "Female"
-      - "Male"
-      - "Unknown"
-      - "Unspecified"
-
-  race:
-    term:
-      $ref: "_terms.yaml#/race"
-    enum:
-      - "White"
-      - "American Indian or Alaska Native"
-      - "Black or African American"
-      - "Asian"
-      - "Native Hawaiian or Other Pacific Islander"
-      - "Other"
-      - "Unknown"
-
-  vital_status:
-    term:
-      $ref: "_terms.yaml#/vital_status"
-    enum:
-      - "Alive"
-      - "Dead"
-      - "Lost to Follow-up"
-      - "Unknown"
-
-# BDC demographic props:
-  age_at_index:
-    description: >
-      The subject's age (in years) on the reference or anchor date used during date obfuscation (HARMONIZED). If age is greater than 89 years, see 'age_at_index_gt89'.
-    type: number
-    maximum: 89
-    minimum: 0
-
-  age_at_index_gt89:
-    description: >
-      Indicate whether the subject's age (in years) on the reference or anchor date used during date obfuscation (HARMONIZED) is greater than 89 years.
-    enum:
-      - "Yes"
-      - "No"
-
-  annotated_sex:
-    term:
-      $ref: "_terms.yaml#/gender"
-    enum:
-      - female
-      - male
-      - unknown
-      - unspecified
-      - not reported
-
-  race:
-    term:
-      $ref: "_terms.yaml#/race"
-    description: >
-      Harmonized race category of participant. Acceptable values: white,american indian or alaska native,black or african american,asian,native hawaiian or other pacific islander,hispanic,multiple,other,Unknown,not reported,not allowed to collect (HARMONIZED)
-    type: array
-    items:
-      enum:
-        - "white"
-        - "american indian or alaska native"
-        - "black or african american"
-        - "asian"
-        - "native hawaiian or other pacific islander"
-        - "hispanic"
-        - "multiple"
-        - "other"
-        - "Unknown"
-        - "not reported"
-        - "not allowed to collect"
-
-  ethnicity:
-    term:
-      $ref: "_terms.yaml#/ethnicity"
-    enum:
-      - "hispanic or latino"
-      - "inconsistent/contradictory"
-      - "not hispanic or latino"
-      - "Unknown"
-      - "not reported"
-      - "not allowed to collect"
-
-  weight:
-    term:
-      $ref: "_terms.yaml#/weight"
-    type: number
-
-  bmi_baseline:
-    term:
-      $ref: "_terms.yaml#/bmi"
-    type: number
-
-  height_baseline:
-    term:
-      $ref: "_terms.yaml#/height"
-    type: number
-
-  age_at_height_baseline:
-    description: >
-      age at measurement of height_baseline (years) (HARMONIZED)
-    type: number
-
-  unit_height_baseline:
-    description: >
-      harmonization unit for height_baseline (A "harmonization unit" is a defined group of subjects whose phenotypes can be similarly processed.) (HARMONIZED)
     type: string
-
-  unit_race:
-    description: >
-      harmonization unit for race (A "harmonization unit" is a defined group of subjects whose phenotypes can be similarly processed.) (HARMONIZED)
-    type: string
-
-  unit_ethnicity:
-    description: >
-      harmonization unit for ethnicity (A "harmonization unit" is a defined group of subjects whose phenotypes can be similarly processed.) (HARMONIZED)
-    type: string
-
-  hispanic_subgroup:
-    description: >
-      classification of Hispanic/Latino background for Hispanic/Latino subjects where country or region of origin information is available (HARMONIZED)
-    enum:
-      - "CentralAmerican"
-      - "CostaRican"
-      - "Cuban"
-      - "Dominican"
-      - "Mexican"
-      - "PuertoRican"
-      - "SouthAmerican"
-      - "Multiple"
-
-  unit_hispanic_subgroup:
-    description: >
-      harmonization unit for hispanic_subgroup (A "harmonization unit" is a defined group of subjects whose phenotypes can be similarly processed.) (HARMONIZED)
-    type: string
-
-  age_at_bmi_baseline:
-    description: >
-      age at measurement of bmi (years) (HARMONIZED)
-    type: number
-
-  age_at_weight_baseline:
-    description: >
-      age at measurement of weight_baseline (years) (HARMONIZED)
-    type: number
-
-  subcohort:
-    description: >
-      A distinct subgroup within a study, generally indicating subjects who share similar characteristics due to study design. Subjects may belong to only one subcohort. (HARMONIZED)
-    enum:
-      - "Amish_HAPI"
-      - "Amish_Longevity"
-      - "Amish_Wellness"
-      - "ARIC_NoSubcohortStructure"
-      - "CARDIA_NoSubcohortStructure"
-      - "CFS_NoSubcohortStructure"
-      - "CHS_AfricanAmerican"
-      - "CHS_Original"
-      - "COPDGene_NoSubcohortStructure"
-      - "CRA_NoSubcohortStructure"
-      - "FHS_Gen3"
-      - "FHS_NewOffspringSpouse"
-      - "FHS_Offspring"
-      - "FHS_Omni1"
-      - "FHS_Omni2"
-      - "FHS_Original"
-      - "GENOA_AfricanAmerican"
-      - "GENOA_EuropeanAmerican"
-      - "GOLDN_NoSubcohortStructure"
-      - "HCHS_SOL_NoSubcohortStructure"
-      - "HVH_NoSubcohortStructure"
-      - "JHS_NoSubcohortStructure"
-      - "Mayo_VTE_GENEVA"
-      - "MESA_AirNR"
-      - "MESA_Classic"
-      - "MESA_Family"
-      - "SAS_NoSubcohortStructure"
-      - "WHI_ClinicalTrial"
-      - "WHI_ObservationalStudy"
-
-  unit_annotated_sex:
-    description: >
-      harmonization unit for annotated_sex (A "harmonization unit" is a defined group of subjects whose phenotypes can be similarly processed.) (HARMONIZED)
-    type: string
-
-  unit_bmi_baseline:
-    description: >
-      harmonization unit for bmi_baseline (A "harmonization unit" is a defined group of subjects whose phenotypes can be similarly processed.) (HARMONIZED)
-    type: string
-
-  unit_subcohort:
-    description: >
-      harmonization unit for subcohort (A "harmonization unit" is a defined group of subjects whose phenotypes can be similarly processed.) (HARMONIZED)
-    type: string
-
-  unit_weight_baseline:
-    description: >
-      harmonization unit for weight_baseline (A "harmonization unit" is a defined group of subjects whose phenotypes can be similarly processed.) (HARMONIZED)
-    type: string
-
-  weight_baseline:
-    description: >
-      Body weight at baseline. (kg) (HARMONIZED)
-    type: number
-
-  population:
-    description: >
-      CHB Han Chinese in Beijing, China EAS; JPT Japanese in Tokyo, Japan EAS; CHS Southern Han Chinese EAS; CDX Chinese Dai in Xishuangbanna, China EAS; KHV Kinh in Ho Chi Minh City, Vietnam EAS; CEU Utah Residents (CEPH) with Northern and Western European Ancestry EUR; TSI Toscani in Italia EUR; FIN Finnish in Finland EUR; GBR British in England and Scotland EUR; IBS Iberian Population in Spain EUR; YRI Yoruba in Ibadan, Nigeria AFR; LWK Luhya in Webuye, Kenya AFR; GWD Gambian in Western Divisions in the Gambia AFR; MSL Mende in Sierra Leone AFR; ESN Esan in Nigeria AFR; ASW Americans of African Ancestry in SW USA AFR; ACB African Caribbeans in Barbados AFR; MXL Mexican Ancestry from Los Angeles USA AMR; PUR Puerto Ricans from Puerto Rico AMR; CLM Colombians from Medellin, Colombia AMR; PEL Peruvians from Lima, Peru AMR; GIH Gujarati Indian from Houston, Texas SAS; PJL Punjabi from Lahore, Pakistan SAS; BEB Bengali from Bangladesh SAS; STU Sri Lankan Tamil from the UK SAS; ITU Indian Telugu from the UK
-    enum:
-      - "CHB"
-      - "JPT"
-      - "CHS"
-      - "CDX"
-      - "KHV"
-      - "CEU"
-      - "TSI"
-      - "FIN"
-      - "GBR"
-      - "IBS"
-      - "YRI"
-      - "LWK"
-      - "GWD"
-      - "MSL"
-      - "ESN"
-      - "ASW"
-      - "ACB"
-      - "MXL"
-      - "PUR"
-      - "CLM"
-      - "PEL"
-      - "GIH"
-      - "PJL"
-      - "BEB"
-      - "STU"
-      - "ITU"
-      - "other"
-      - "Unknown"
-      - "not reported"
-      - "not allowed to collect"
-
-## MIDRC props:
-
-  age_at_index:
-    description: The study participant's age, in years, at the index event. The index event is determined by the data submitter and used as an anchor date for all temporal variables. Note that an age of 0 indicates a participant who is younger than 1 year old. For participants with ages greater than 89 years, please use the property 'age_at_index_gt89'.
-    type: number
-    maximum: 89
-    minimum: 0
-
-  age_at_index_gt89:
-    description: Indicates whether the subject's age at the time of the study was greater than 89 years.
-    enum:
-      - "Yes"
-      - "No"
-
-  covid19_positive:
-    description: "An indicator of whether the patient has ever had a positive COVID-19 test or been diagnosed with one of the following ICD-10 COVID-19 conditions: COVID-19 (U07. 1), Influenza due to unidentified influenza virus with other manifestations (J11.8), Post COVID-19 condition (U09.9), Myalgic encephalomyelitis/chronic fatigue syndrome (G93.32), or Sequelae of other specified infectious and parasitic diseases (B94.8). For more information about a patient's specific COVID-19 diagnosis, details can be found under Condition."
-    enum:
-      - "Yes"
-      - "No"
-      - "Indeterminate"
-      - "Not Reported"
-
-  country_of_residence:
-    description: The country where the subject resides.
-    type: string
-
-  ethnicity:
-    term:
-      $ref: "_terms.yaml#/ethnicity"
-    enum:
-      - Hispanic or Latino
-      - Not Hispanic or Latino
-      - Not Reported
-
-  gen3_linked_subjects_available:
-    description: Indicates whether there is data available for the subject in other data resources.
-    type: boolean
-
-  icu_indicator:
-    description: Indicates whether the subject has been admitted to the ICU.
-    type: boolean
+#   PatientSex: # use subject.gender
+#     description: (0010,0040) the patient's sex; the biologic character or quality that distinguishes male and female from one another as expressed by analysis of the person's gonadal, morphologic  (internal and external), chromosomal, and hormonal characteristics 
+#     type: string
 
   index_event:
     description: The event used as the anchor or start date for all temporal data elements. This acts as day 0 on a timeline of events relating to the patient.
     type: string
 
-  linked_external_data:
-    description: A list of all external data resources that are confirmed to have data for the case.
-    type: array
-    items:
-      type: string
-
-  long_covid_diagnosis:
-    description: "An indicator of whether the patient has ever been diagnosed with one of the following ICD-10 long COVID-19 conditions: U09.9 (Post COVID-19 condition, unspecified), G93.32 (Myalgic encephalomyelitis/chronic fatigue syndrome), and B94.8 (Sequelae of other specified infectious and parasitic diseases).  'Positive' means the patient was diagnosed with a long COVID condition, while 'Not Reported' means the patient has never been diagnosed with a long COVID condition."
-    enum:
-      - Positive
-      - Not Reported
-
   race:
     term:
       $ref: "_terms.yaml#/race"
-    enum:
-      - American Indian or Alaska Native
-      - Asian
-      - Black or African American
-      - Native Hawaiian or other Pacific Islander
-      - Other
-      - White
-      - Not Reported
-
-  sex:
-    description: The biologic character or quality that distinguishes male and female from one another as expressed by analysis of the person's gonadal, morphologic  (internal and external), chromosomal, and hormonal characteristics.
-    enum:
-      - Female
-      - Male
-      - Not Reported
+    type: string
 
   site_id:
     description: A de-identified code used to classify a case as part of a specific data submission.
     type: string
 
-  token_record_id:
-    description: An ID used to link a de-identified case in MIDRC to the same case in an external data resource.
+  vital_status:
+    term:
+      $ref: "_terms.yaml#/vital_status"
     type: string
-
-  treatment_info:
-    description: Indicates whether detailed treatment information is available for the subject.
-    type: boolean
-
-  ventilator_indicator:
-    description: Indicates whether the subject has been on a ventilator.
-    type: boolean
-
+    
   zip:
     description: The three-digit United States zip code of residence for any population greater than 20,000. For zip codes where the three digit number represents a population less than 20,000 "000" will be provided.
-    type: string
-
-
-## DICOM props
-  PatientAge:
-    description: (0010,1010) the patient's age at imaging.
-    type: number
-  
-  PatientID:
-    description: (0010,0020) A unique identifier for the patient.
-    type: string
-
-  PatientSex:
-    description: (0010,0040) the patient's sex; the biologic character or quality that distinguishes male and female from one another as expressed by analysis of the person's gonadal, morphologic  (internal and external), chromosomal, and hormonal characteristics 
-    type: string
-
-  EthnicGroup:
-    description: (0010,2160) The ethnic group to which the patient belongs.
-    type: string
-
-  race:
-    term:
-      $ref: "_terms.yaml#/race"
     type: string
 
   datasets:

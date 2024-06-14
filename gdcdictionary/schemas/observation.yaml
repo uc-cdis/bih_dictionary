@@ -40,6 +40,9 @@ properties:
 
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
+
+
+
   days_to_observation:
     description: The number of days from the index_date to the date of the observation.
     type: integer

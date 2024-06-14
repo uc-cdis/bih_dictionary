@@ -4,7 +4,7 @@ id: "unaligned_reads_file"
 title: Unaligned Reads File
 type: object
 namespace: https://imaging-hub.data-commons.org
-category: data_file
+category: file_metadata
 program: '*'
 project: '*'
 description: "Data file containing unaligned reads, e.g., a FASTQ file."
@@ -41,57 +41,39 @@ links:
 required:
   - type
   - submitter_id
-  - file_name
-  - file_size
-  - md5sum
-  - data_category
-  - data_type
-  - data_format
 
 uniqueKeys:
   - [ id ]
   - [ project_id, submitter_id ]
 
 properties:
-  $ref: "_definitions.yaml#/data_file_properties"
+  $ref: "_definitions.yaml#/ubiquitous_properties"
 
   data_category:
     term:
       $ref: "_terms.yaml#/data_category"
     type: string
-    # enum:
-    #   - Sequencing Data
-    #   - Sequencing Reads
-    #   - Raw Sequencing Data
 
   data_type:
     term:
       $ref: "_terms.yaml#/data_type"
     type: string
-    # enum: [ "Unaligned Reads" ]
 
   data_format:
     term:
       $ref: "_terms.yaml#/data_format"
     type: string
-    # enum:
-    #   - BAM
-    #   - FASTQ
 
   experimental_strategy:
     term:
       $ref: "_terms.yaml#/experimental_strategy"
     type: string
-    # enum:
-    #   - WGS
-    #   - WXS
-    #   - Low Pass WGS
-    #   - Validation
-    #   - RNA-Seq
-    #   - miRNA-Seq
-    #   - Total RNA-Seq
-    #   - Amplicon
-    #   - Other
+
+  object_ids:
+    description: The list of file identifiers (object_ids, DRS URIs, or data GUIDs, etc.) for the file(s), if applicable.
+    type: array
+    items:
+      type: string
 
   read_groups:
     $ref: "_definitions.yaml#/to_many"
