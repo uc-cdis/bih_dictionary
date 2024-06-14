@@ -92,6 +92,12 @@ properties:
       - "Poor image quality"
       - "Not Reported"
 
+  object_ids:
+    description: The list of file identifiers (object_ids, DRS URIs, or data GUIDs, etc.) for the file(s), if applicable.
+    type: array
+    items:
+      type: string
+
   series_instance_uid:
     description: >
       Formal identifier for this image or other content.

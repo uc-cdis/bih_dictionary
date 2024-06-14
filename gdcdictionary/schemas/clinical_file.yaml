@@ -77,6 +77,12 @@ properties:
     description: "The text term describing the file format of the supplementary file, for example, PDF, XLSX, JPEG, PNG, TSV, etc."
     type: string
 
+  object_ids:
+    description: The list of file identifiers (object_ids, DRS URIs, or data GUIDs, etc.) for the file(s), if applicable.
+    type: array
+    items:
+      type: string
+
   core_metadata_collections:
     description: The submitter_id or id of the core_metadata_collection to which the supplementary file belongs, i.e., a link to a record in the parent node.
     $ref: "_definitions.yaml#/to_many"

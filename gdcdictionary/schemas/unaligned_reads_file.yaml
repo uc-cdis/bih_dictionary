@@ -69,6 +69,12 @@ properties:
       $ref: "_terms.yaml#/experimental_strategy"
     type: string
 
+  object_ids:
+    description: The list of file identifiers (object_ids, DRS URIs, or data GUIDs, etc.) for the file(s), if applicable.
+    type: array
+    items:
+      type: string
+
   read_groups:
     $ref: "_definitions.yaml#/to_many"
   core_metadata_collections:

@@ -76,6 +76,12 @@ properties:
       $ref: "_terms.yaml#/experimental_strategy"
     type: string
 
+  object_ids:
+    description: The list of file identifiers (object_ids, DRS URIs, or data GUIDs, etc.) for the file(s), if applicable.
+    type: array
+    items:
+      type: string
+
   variant_calling_workflow_type: # from BDC germline_mutation_calling_workflow node
     description: The workflow used to call germline mutations from sequencing reads, e.g., HaplotypeCaller.
     type: string

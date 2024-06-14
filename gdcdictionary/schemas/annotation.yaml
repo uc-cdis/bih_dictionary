@@ -122,6 +122,12 @@ properties:
     maximum: 24
     minimum: 0
 
+  object_ids:
+    description: The list of file identifiers (object_ids, DRS URIs, or data GUIDs, etc.) for the file(s), if applicable.
+    type: array
+    items:
+      type: string
+
   sift_image_quality_index:
     description: A score of image quality based on the SIFT annotation software.
     enum:
