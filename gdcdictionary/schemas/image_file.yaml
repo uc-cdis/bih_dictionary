@@ -56,15 +56,9 @@ uniqueKeys:
 required:
   - type
   - submitter_id
-  - file_name
-  - file_size
-  - md5sum
-  - data_category
-  - data_type
-  - data_format
 
 properties:
-  $ref: "_definitions.yaml#/data_file_properties"
+  $ref: "_definitions.yaml#/ubiquitous_properties"
 
   type:
     enum: [ "imaging_file" ]
@@ -113,8 +107,8 @@ properties:
       The image file's data release Phase for a particular study. 
     type: integer 
     
-
   subjects:
     $ref: "_definitions.yaml#/to_one"
+
   core_metadata_collections:
     $ref: "_definitions.yaml#/to_one"

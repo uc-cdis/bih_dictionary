@@ -48,19 +48,13 @@ links:
 required:
   - type
   - submitter_id
-  - file_name
-  - file_size
-  - md5sum
-  - data_category
-  - data_type
-  - data_format
 
 uniqueKeys:
   - [ id ]
   - [ project_id, submitter_id ]
 
 properties:
-  $ref: "_definitions.yaml#/data_file_properties"
+  $ref: "_definitions.yaml#/ubiquitous_properties"
 
   alignment_workflow_type:
     description: The workflow used to align the sequencing reads, e.g., STAR, BWA-aln, BWA-mem, spinakker, etc.
