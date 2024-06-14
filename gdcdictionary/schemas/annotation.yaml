@@ -30,10 +30,10 @@ links:
         target_type: dataset
         multiplicity: many_to_one
         required: false
-      - name: cases
+      - name: subjects
         backref: annotations
         label: related_to
-        target_type: case
+        target_type: subject
         multiplicity: many_to_one
         required: false
       - name: imaging_studies
@@ -144,7 +144,7 @@ properties:
 
 # # LINKS:
   datasets:
-    description: The submitter_id or id of the case this annotation relates to, i.e., a link to a record in the parent node.
+    description: The submitter_id or id of the dataset this annotation relates to, i.e., a link to a record in the parent node.
     $ref: "_definitions.yaml#/to_one"
 
   subjects:
