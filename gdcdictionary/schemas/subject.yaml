@@ -90,17 +90,11 @@ properties:
     term:
       $ref: "_terms.yaml#/ethnicity"
     type: string
-#   EthnicGroup: # use subject.ethnicity
-#     description: (0010,2160) The ethnic group to which the patient belongs.
-#     type: string
 
   gender:
     term:
       $ref: "_terms.yaml#/gender"
     type: string
-#   PatientSex: # use subject.gender
-#     description: (0010,0040) the patient's sex; the biologic character or quality that distinguishes male and female from one another as expressed by analysis of the person's gonadal, morphologic  (internal and external), chromosomal, and hormonal characteristics 
-#     type: string
 
   index_event:
     description: The event used as the anchor or start date for all temporal data elements. This acts as day 0 on a timeline of events relating to the patient.
