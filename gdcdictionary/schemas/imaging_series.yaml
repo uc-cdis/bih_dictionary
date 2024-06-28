@@ -56,7 +56,7 @@ properties:
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
   AcquisitionType:
-    description: 	(0018, 9302) Acquisition Type
+    description: (0018, 9302) Acquisition Type
     type: string
 
   BodyPartExamined:
