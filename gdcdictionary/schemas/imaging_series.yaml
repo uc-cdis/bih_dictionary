@@ -55,12 +55,28 @@ properties:
 
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
+  AcquisitionType:
+    description: (0018, 9302) Acquisition Type
+    type: string
+
   BodyPartExamined:
     description: (0018, 0015) Body Part Examined.
     type: string
 
+  Contrast:
+    description: Imaging done with contrast, 'Yes' or 'No'?
+    type: string
+
+  ContrastBolusAgent:
+    description: (0018, 0010) Contrast/Bolus Agent
+    type: string
+
   dicom_viewer_url:
     description: A URL where the imaging series can be viewed.
+    type: string
+
+  MagneticFieldStrength:
+    description: (0018, 0087) Magnetic Field Strength
     type: string
 
   Manufacturer:
@@ -76,10 +92,26 @@ properties:
     type: string
 
   object_ids:
-    description: The list of file identifiers (object_ids, DRS URIs, or data GUIDs, etc.) for the imaging series, if applicable.
+    description: The list of file identifiers (data GUIDs, DRS URIs, or URLs, etc.) for the imaging series, if applicable.
     type: array
     items:
       type: string
+
+  Radiopharmaceutical:
+    description: (0018, 0031) Radiopharmaceutical
+    type: string
+
+  ReceiveCoilName:
+    description: (0018, 1250) Receive Coil Name
+    type: string
+
+  ScanningSequence:
+    description: (0018, 0020) Scanning Sequence
+    type: string
+
+  ScanOptions:
+    description: (0018, 0022) ScanOptions
+    type: string
 
   SeriesDescription:
     description: (0008, 103e) Series Description
@@ -89,9 +121,34 @@ properties:
     description: (0020, 000e) Series Instance UID
     type: string
 
-  ViewPosition:
-    description: (0018,5101) Radiographic view associated with Patient Position (0018,5100).
+  SequenceVariant:
+    description: (0018, 0021) Sequence Variant
     type: string
+
+  SliceThickness:
+    description: (0018, 0050) Slice Thickness
+    type: string
+
+  SoftwareVersions:
+    description: (0018, 1020) Software Versions
+    type: string
+
+  TransmitCoilName:
+    description: (0018, 1251) Transmit Coil Name
+    type: string
+
+  ViewPosition:
+    description: (0018, 5101) Radiographic view associated with (0018, 5100) Patient Position.
+    type: string
+
+
+
+
+
+
+
+
+
 
   # links
   imaging_studies:
@@ -105,3 +162,7 @@ properties:
   datasets:
     description: The submitter_id or id of the dataset this imaging_series belongs to, i.e., a link to a record in the parent node.
     $ref: "_definitions.yaml#/to_many"
+
+
+
+

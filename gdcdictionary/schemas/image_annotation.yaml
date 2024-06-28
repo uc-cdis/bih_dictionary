@@ -1,14 +1,14 @@
 $schema: "http://json-schema.org/draft-04/schema#"
 
-id: "annotation"
-title: Annotation
+id: "image_annotation"
+title: Image Annotation
 type: object
 nodeTerms: null
 namespace: https://imaging-hub.data-commons.org
-category: annotation
+category: file_metadata
 program: '*'
 project: '*'
-description: Information describing characteristics of imaging studies, series and instances (e.g., segmentations, bounding boxes, feature labels) and inferences based on those characteristics (e.g., predicted diagnoses). Annotations may be recorded in the course of clinical care or retrospectively for purposes of research (e.g., imaging annotations from PACS or retrospective labeling tools). Please refer to https://midrc.org/annotations to learn more about a particular batch of annotations.
+description: Files containing information describing characteristics of imaging studies, series and instances (e.g., segmentations, bounding boxes, feature labels) and inferences based on those characteristics (e.g., predicted diagnoses). Annotations may be recorded in the course of clinical care or retrospectively for purposes of research (e.g., imaging annotations from PACS or retrospective labeling tools). Please refer to https://midrc.org/annotations to learn more about a particular batch of annotations.
 additionalProperties: false
 submittable: true
 validators: null
@@ -123,7 +123,7 @@ properties:
     minimum: 0
 
   object_ids:
-    description: The list of file identifiers (object_ids, DRS URIs, or data GUIDs, etc.) for the file(s), if applicable.
+    description: The list of file identifiers (URLs, DRS URIs, or data GUIDs, etc.) for the file(s), if applicable.
     type: array
     items:
       type: string
