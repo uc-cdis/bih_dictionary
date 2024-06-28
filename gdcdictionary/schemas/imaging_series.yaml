@@ -141,15 +141,6 @@ properties:
     description: (0018, 5101) Radiographic view associated with (0018, 5100) Patient Position.
     type: string
 
-
-
-
-
-
-
-
-
-
   # links
   imaging_studies:
     description: The submitter_id or id of the imaging_study this imaging_series belongs to, i.e., a link to a record in the parent node.
