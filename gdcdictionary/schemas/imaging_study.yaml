@@ -63,9 +63,9 @@ properties:
     items:
       type: string
 
-  # EthnicGroup: # use subject.ethnicity
-  #   description: (0010,2160) The ethnic group to which the patient belongs.
-  #   type: string
+  EthnicGroup: # use subject.ethnicity
+    description: (0010,2160) The ethnic group to which the patient belongs.
+    type: string
 
   study_modality:
     description: The list of modalities in the imaging study; derived from (0008, 0060) Modality.
@@ -80,9 +80,9 @@ properties:
   # PatientBirthYear:
   #   description: (0010,0030) Patient's Birth Date Attribute
 
-  # PatientID: # use subject.submitter_id
-  #   description: (0010,0020) A unique identifier for the patient.
-  #   type: string
+  PatientID: # use subject.submitter_id
+    description: (0010,0020) A unique identifier for the patient.
+    type: string
 
   PatientSex: # use subject.gender as source of truth, but this can store DICOM value
     description: (0010,0040) the patient's sex; the biologic character or quality that distinguishes male and female from one another as expressed by analysis of the person's gonadal, morphologic  (internal and external), chromosomal, and hormonal characteristics 

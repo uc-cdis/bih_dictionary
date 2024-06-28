@@ -45,6 +45,14 @@ properties:
     description: A unique identifier for the dataset.
     type: string
 
+  commons_name:
+    description: A short ID for the data commons or resource from which the metadata originate.
+    type: string
+
+  commons_long_name:
+    description: The expanded name of the data commons or resource from which the metadata originate.
+    type: string
+
   data_citation:
     description: The citation for the published dataset.
     type: string
