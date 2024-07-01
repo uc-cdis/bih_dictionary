@@ -71,8 +71,7 @@ uniqueKeys:
   - [project_id, submitter_id]
 
 properties:
-
-  $ref: "_definitions.yaml#/ubiquitous_properties"
+  $ref: "_definitions.yaml#/data_file_properties"
 
   airspace_disease_grading:
     description: Values are extracted from the annotation file midrc_mdai_chestxr. Accepted values are "mild" opacities (1-2 lung zones), "moderate" opacities (3-4 lung zones), and "severe" opacities (>4 lung zones).
