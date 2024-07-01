@@ -24,6 +24,12 @@ links:
   - exclusive: false
     required: true
     subgroup:
+      - name: core_metadata_collections
+        backref: image_files
+        label: data_from
+        target_type: core_metadata_collection
+        multiplicity: many_to_one
+        required: false
       - name: datasets
         backref: annotations
         label: related_to
@@ -161,4 +167,7 @@ properties:
 
   image_files:
     description: The submitter_id or id of the image file this annotation relates to, i.e., a link to a record in the parent node.
+    $ref: "_definitions.yaml#/to_one"
+
+  core_metadata_collections:
     $ref: "_definitions.yaml#/to_one"
