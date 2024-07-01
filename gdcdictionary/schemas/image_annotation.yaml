@@ -25,7 +25,7 @@ links:
     required: true
     subgroup:
       - name: core_metadata_collections
-        backref: image_files
+        backref: annotations
         label: data_from
         target_type: core_metadata_collection
         multiplicity: many_to_one
