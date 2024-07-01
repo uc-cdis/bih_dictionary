@@ -56,6 +56,9 @@ uniqueKeys:
 required:
   - type
   - submitter_id
+  - data_category
+  - data_type
+  - data_format
 
 properties:
   $ref: "_definitions.yaml#/data_file_properties"

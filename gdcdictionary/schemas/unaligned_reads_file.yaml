@@ -41,6 +41,9 @@ links:
 required:
   - type
   - submitter_id
+  - data_category
+  - data_type
+  - data_format
 
 uniqueKeys:
   - [ id ]
