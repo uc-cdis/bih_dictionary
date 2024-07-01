@@ -4,11 +4,11 @@ id: "aligned_reads_file"
 title: Aligned Reads File
 type: object
 namespace: https://imaging-hub.data-commons.org
-category: file_metadata
+category: data_file
 program: '*'
 project: '*'
 description: >
-  Data file containing aligned reads, e.g., a BAM file. 
+  Data file containing aligned reads, e.g., a BAM file.
 additionalProperties: false
 submittable: true
 validators: null

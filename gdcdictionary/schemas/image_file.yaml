@@ -4,7 +4,7 @@ id: "image_file"
 title: Image File
 type: object
 namespace: https://imaging-hub.data-commons.org
-category: file_metadata
+category: data_file
 program: '*'
 project: '*'
 description: >
@@ -107,12 +107,12 @@ properties:
     description: >
       order number for this image or other content.
     type: integer
-    
+
   file_phase:
     description: >
-      The image file's data release Phase for a particular study. 
-    type: integer 
-    
+      The image file's data release Phase for a particular study.
+    type: integer
+
   subjects:
     $ref: "_definitions.yaml#/to_one"
 

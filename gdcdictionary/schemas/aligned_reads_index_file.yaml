@@ -4,7 +4,7 @@ id: "aligned_reads_index_file"
 title: Aligned Reads Index File
 type: object
 namespace: https://imaging-hub.data-commons.org
-category: file_metadata
+category: data_file
 program: '*'
 project: '*'
 description: "Data file containing the index for a set of aligned reads, e.g., a BAI file."
@@ -34,7 +34,7 @@ links:
     target_type: core_metadata_collection
     multiplicity: many_to_many
     required: false
-    
+
 required:
   - type
   - submitter_id
@@ -60,7 +60,7 @@ properties:
     term:
       $ref: "_terms.yaml#/data_format"
     type: string
-      
+
   object_ids:
     description: The list of file identifiers (URLs, DRS URIs, or data GUIDs, etc.) for the file(s), if applicable.
     type: array
