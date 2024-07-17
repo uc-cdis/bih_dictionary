@@ -4,7 +4,7 @@ id: "variant_call_file"
 title: Variant Call File
 type: object
 namespace: https://imaging-hub.data-commons.org
-category: file_metadata
+category: data_file
 program: '*'
 project: '*'
 description: >
@@ -48,13 +48,16 @@ links:
 required:
   - type
   - submitter_id
+  - data_category
+  - data_type
+  - data_format
 
 uniqueKeys:
   - [ id ]
   - [ project_id, submitter_id ]
 
 properties:
-  $ref: "_definitions.yaml#/ubiquitous_properties"
+  $ref: "_definitions.yaml#/data_file_properties"
 
   data_category:
     term:
@@ -74,6 +77,11 @@ properties:
   experimental_strategy:
     term:
       $ref: "_terms.yaml#/experimental_strategy"
+    type: string
+
+  file_url:
+    description: >
+      The URL of the file if it does not have a data GUID or object_id.
     type: string
 
   object_ids:

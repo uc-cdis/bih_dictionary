@@ -75,6 +75,20 @@ properties:
     description: A URL where the imaging series can be viewed.
     type: string
 
+  file_names:
+    description: >
+      The file names of any data files associated with this imaging series.
+    type: array
+    items:
+      type: string
+
+  file_urls:
+    description: >
+      The URLs of any data files associated with this imaging series.
+    type: array
+    items:
+      type: string
+
   MagneticFieldStrength:
     description: (0018, 0087) Magnetic Field Strength
     type: string

@@ -4,11 +4,11 @@ id: "aligned_reads_file"
 title: Aligned Reads File
 type: object
 namespace: https://imaging-hub.data-commons.org
-category: file_metadata
+category: data_file
 program: '*'
 project: '*'
 description: >
-  Data file containing aligned reads, e.g., a BAM file. 
+  Data file containing aligned reads, e.g., a BAM file.
 additionalProperties: false
 submittable: true
 validators: null
@@ -48,13 +48,16 @@ links:
 required:
   - type
   - submitter_id
+  - data_category
+  - data_type
+  - data_format
 
 uniqueKeys:
   - [ id ]
   - [ project_id, submitter_id ]
 
 properties:
-  $ref: "_definitions.yaml#/ubiquitous_properties"
+  $ref: "_definitions.yaml#/data_file_properties"
 
   alignment_workflow_type:
     description: The workflow used to align the sequencing reads, e.g., STAR, BWA-aln, BWA-mem, spinakker, etc.
@@ -104,6 +107,11 @@ properties:
     #   - Amplicon
     #   - Other
 
+  file_url:
+    description: >
+      The URL of the file if it does not have a data GUID or object_id.
+    type: string
+
   object_ids:
     description: The list of file identifiers (URLs, DRS URIs, or data GUIDs, etc.) for the file(s), if applicable.
     type: array
@@ -112,5 +120,9 @@ properties:
 
   read_groups:
     $ref: "_definitions.yaml#/to_many"
+
+  unaligned_reads_files:
+    $ref: "_definitions.yaml#/to_many"
+
   core_metadata_collections:
     $ref: "_definitions.yaml#/to_many"

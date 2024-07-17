@@ -4,7 +4,7 @@ id: "image_file"
 title: Image File
 type: object
 namespace: https://imaging-hub.data-commons.org
-category: file_metadata
+category: data_file
 program: '*'
 project: '*'
 description: >
@@ -30,6 +30,12 @@ links:
         target_type: core_metadata_collection
         multiplicity: many_to_one
         required: false
+      - name: datasets
+        backref: image_files
+        label: data_from
+        target_type: dataset
+        multiplicity: many_to_one
+        required: false
       - name: subjects
         backref: image_files
         label: data_from
@@ -49,6 +55,7 @@ links:
         multiplicity: many_to_one
         required: false
 
+
 uniqueKeys:
   - [id]
   - [project_id, submitter_id]
@@ -56,9 +63,12 @@ uniqueKeys:
 required:
   - type
   - submitter_id
+  - data_category
+  - data_type
+  - data_format
 
 properties:
-  $ref: "_definitions.yaml#/ubiquitous_properties"
+  $ref: "_definitions.yaml#/data_file_properties"
 
   type:
     enum: [ "imaging_file" ]
@@ -81,6 +91,11 @@ properties:
   experimental_strategy:
     term:
       $ref: "_terms.yaml#/experimental_strategy"
+    type: string
+
+  file_url:
+    description: >
+      The URL of the file if it does not have a data GUID or object_id.
     type: string
 
   image_quality:
@@ -107,13 +122,22 @@ properties:
     description: >
       order number for this image or other content.
     type: integer
-    
+
   file_phase:
     description: >
-      The image file's data release Phase for a particular study. 
-    type: integer 
-    
+      The image file's data release Phase for a particular study.
+    type: integer
+
+  datasets:
+    $ref: "_definitions.yaml#/to_one"
+
   subjects:
+    $ref: "_definitions.yaml#/to_one"
+
+  imaging_studies:
+    $ref: "_definitions.yaml#/to_one"
+
+  imaging_series:
     $ref: "_definitions.yaml#/to_one"
 
   core_metadata_collections:

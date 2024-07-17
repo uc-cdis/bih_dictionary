@@ -4,7 +4,7 @@ id: "clinical_file"
 title: Clinical File
 type: object
 namespace: https://data.midrc.org
-category: file_metadata
+category: data_file
 program: '*'
 project: '*'
 description: >
@@ -45,20 +45,19 @@ links:
         multiplicity: many_to_one
         required: false
 
-uniqueKeys:
-  - [id]
-  - [project_id, submitter_id]
-
 required:
   - submitter_id
   - type
+  - data_category
+  - data_type
+  - data_format
 
 uniqueKeys:
   - [ id ]
   - [ project_id, submitter_id ]
 
 properties:
-  $ref: "_definitions.yaml#/ubiquitous_properties"
+  $ref: "_definitions.yaml#/data_file_properties"
 
   file_description:
     description: >
@@ -75,6 +74,11 @@ properties:
 
   data_format:
     description: "The text term describing the file format of the supplementary file, for example, PDF, XLSX, JPEG, PNG, TSV, etc."
+    type: string
+
+  file_url:
+    description: >
+      The URL of the file if it does not have a data GUID or object_id.
     type: string
 
   object_ids:

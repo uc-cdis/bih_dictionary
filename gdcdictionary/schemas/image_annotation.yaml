@@ -5,7 +5,7 @@ title: Image Annotation
 type: object
 nodeTerms: null
 namespace: https://imaging-hub.data-commons.org
-category: file_metadata
+category: data_file
 program: '*'
 project: '*'
 description: Files containing information describing characteristics of imaging studies, series and instances (e.g., segmentations, bounding boxes, feature labels) and inferences based on those characteristics (e.g., predicted diagnoses). Annotations may be recorded in the course of clinical care or retrospectively for purposes of research (e.g., imaging annotations from PACS or retrospective labeling tools). Please refer to https://midrc.org/annotations to learn more about a particular batch of annotations.
@@ -24,6 +24,12 @@ links:
   - exclusive: false
     required: true
     subgroup:
+      - name: core_metadata_collections
+        backref: annotations
+        label: data_from
+        target_type: core_metadata_collection
+        multiplicity: many_to_one
+        required: false
       - name: datasets
         backref: annotations
         label: related_to
@@ -59,14 +65,16 @@ links:
 required:
   - submitter_id
   - type
+  - data_category
+  - data_type
+  - data_format
 
 uniqueKeys:
   - [id]
   - [project_id, submitter_id]
 
 properties:
-
-  $ref: "_definitions.yaml#/ubiquitous_properties"
+  $ref: "_definitions.yaml#/data_file_properties"
 
   airspace_disease_grading:
     description: Values are extracted from the annotation file midrc_mdai_chestxr. Accepted values are "mild" opacities (1-2 lung zones), "moderate" opacities (3-4 lung zones), and "severe" opacities (>4 lung zones).
@@ -100,7 +108,7 @@ properties:
         - midrc_lung_measures
         - midrc_mdai_chestxr
         - mRALE_Mastermind_Challenge
-        - SIFT        
+        - SIFT
 
   class_covid19_pneumonia:
     description: Values are extracted from the annotation file midrc_mdai_chestxr; Accepted values include "typical" appearance, which is multifocal bilateral, peripheral opacities, or opacities with rounded morphology, lower lung-predominant distribution;  "indeterminate" appearance, which is absence of typical findings and unilateral, central or upper lung predominant distribution of airspace disease; "atypical" appearance, which is pneumothorax or pleural effusion, pulmonary edema, lobar consolidation, solitary lung nodule, or mass diffuse tiny nodules cavity; "negative" for pneumonia, which is no lung opacities.
@@ -109,6 +117,21 @@ properties:
         - indeterminate
         - negative
         - typical
+
+  data_category:
+    term:
+      $ref: "_terms.yaml#/data_category"
+    type: string
+
+  data_type:
+    term:
+      $ref: "_terms.yaml#/data_type"
+    type: string
+
+  data_format:
+    term:
+      $ref: "_terms.yaml#/data_format"
+    type: string
 
   instance_uids:
     description: Used to denote that this annotation applies only to specific images (image instances) in a series.  When absent, the annotation when referencing an imaging series node applies to the entire imaging series.
@@ -161,4 +184,7 @@ properties:
 
   image_files:
     description: The submitter_id or id of the image file this annotation relates to, i.e., a link to a record in the parent node.
+    $ref: "_definitions.yaml#/to_one"
+
+  core_metadata_collections:
     $ref: "_definitions.yaml#/to_one"
