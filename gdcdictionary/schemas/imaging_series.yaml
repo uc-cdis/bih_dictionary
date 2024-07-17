@@ -141,14 +141,19 @@ properties:
     description: (0018, 5101) Radiographic view associated with (0018, 5100) Patient Position.
     type: string
 
+  file_names:
+    description: >
+      The file names of any data files associated with this imaging series.
+    type: array
+    items:
+      type: string
 
-
-
-
-
-
-
-
+  file_urls:
+    description: >
+      The URLs of any data files associated with this imaging series.
+    type: array
+    items:
+      type: string
 
   # links
   imaging_studies:

@@ -108,6 +108,11 @@ properties:
       order number for this image or other content.
     type: integer
     
+  file_url:
+    description: >
+      The URL of the data file.
+    type: string
+
   file_phase:
     description: >
       The image file's data release Phase for a particular study. 

@@ -82,6 +82,11 @@ properties:
     items:
       type: string
 
+  file_url:
+    description: >
+      The URL of the file if it does not have a data GUID or object_id.
+    type: string
+
   variant_calling_workflow_type: # from BDC germline_mutation_calling_workflow node
     description: The workflow used to call germline mutations from sequencing reads, e.g., HaplotypeCaller.
     type: string
