@@ -41,10 +41,6 @@ properties:
 
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
-#   PatientID: # use subject.submitter_id
-#     description: (0010,0020) A unique identifier for the patient.
-#     type: string
-
   age_at_index:
     description: The study participant's age, in years, at the index event. The index event is determined by the data submitter and used as an anchor date for all temporal variables. Note that an age of 0 indicates a participant who is younger than 1 year old. For participants with ages greater than 89 years, please use the property 'age_at_index_gt89'.
     type: number
@@ -108,6 +104,13 @@ properties:
   site_id:
     description: A de-identified code used to classify a case as part of a specific data submission.
     type: string
+
+  # subject_id: # just use submitter_id?
+  #   description: (0010,0020) A unique identifier for the patient.
+  #   type: string    
+  #  PatientID: # use subject.submitter_id
+  #    description: (0010,0020) A unique identifier for the patient.
+  #    type: string
 
   vital_status:
     term:

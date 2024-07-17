@@ -76,6 +76,11 @@ properties:
     description: "The text term describing the file format of the supplementary file, for example, PDF, XLSX, JPEG, PNG, TSV, etc."
     type: string
 
+  file_url:
+    description: >
+      The URL of the file if it does not have a data GUID or object_id.
+    type: string
+
   object_ids:
     description: The list of file identifiers (URLs, DRS URIs, or data GUIDs, etc.) for the file(s), if applicable.
     type: array
