@@ -8,7 +8,7 @@ namespace: https://imaging-hub.data-commons.org
 category: administrative
 program: '*'
 project: '*'
-description: A set of metadata and associated data file objects originating from a single research study, clinical trial or patient cohort.
+description: A collection or set of metadata and associated data file objects originating from a single research study, clinical trial or patient cohort.
 additionalProperties: false
 submittable: true
 validators: null
@@ -41,6 +41,10 @@ uniqueKeys:
 properties:
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
+  acknowledgement:
+    description: Publication acknowledgement(s) for the published dataset.
+    type: string
+
   collection_id:
     description: A unique identifier for the dataset.
     type: string
@@ -57,8 +61,16 @@ properties:
     description: The citation for the published dataset.
     type: string
 
+  data_contributor:
+    description: The name of the organization or individual that the contributed dataset belongs to.
+    type: string
+
   data_description:
     description: A brief, free-text description of the data files and associated metadata provided for this dataset.
+    type: string
+
+  data_host:
+    description: The name of the platform, organization, or individual that hosts the imaging data files for the contributed dataset.
     type: string
 
   data_url_doi:
@@ -81,8 +93,36 @@ properties:
     description: Indicates whether the dataset has longitudinal or time-series data.
     type: boolean
 
+  metadata_source_api:
+    description: A description of or URL endpoint for the source metadata used to create this data hub record.
+    type: string
+
+  metadata_source_version:
+    description: The version number or specific database name of the source metadata used to create this data hub record.
+    type: string
+
   primary_site:
     description: The primary body site studied in this dataset.
+    type: string
+
+  publication_citation:
+    description: The major or main publication(s) associated with the data itself or with the publication that published the dataset.
+    type: string
+
+  research_description:
+    description: If the dataset is related to a research study, provide a brief, free-text description or abstract of the study being performed, for example, the hypothesis being tested and a very brief description of the materials, methods and results.
+    type: string
+
+  research_design:
+    description: A summary of the goals of the research or a general description of the research's relationship to a clinical application.
+    type: string
+
+  research_objective:
+    description: The general objective of the research; what the researchers hope to discover or determine.
+    type: string
+
+  research_setup:
+    description: A high level description of the setup used to achieve the research objectives.
     type: string
 
   projects:
