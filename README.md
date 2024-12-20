@@ -1,7 +1,7 @@
-# MIDRC BDF Imaging Hub Data Dictionary
-This is the repository containing the YAML schemas for the MIDRC BDF Imaging Hub data dictionary.
+# Prometheus Data Platform (PDP) Data Dictionary
+This is the repository containing the YAML schemas for the Prometheus Data Platform (PDP) data dictionary.
 
-The Imaging Hub is powered by the Gen3 software stack. For more information on Gen3, visit the documentation at gen3.org. For more details about how Gen3 uses a data model and how the data dictionary should be formatted, see https://gen3.org/resources/user/dictionary/.
+PDP is powered by the Gen3 software stack. For more information on Gen3, visit the documentation at gen3.org. For more details about how Gen3 uses a data model and how the data dictionary should be formatted, see https://gen3.org/resources/user/dictionary/.
 
 
 # Data Dictionary
