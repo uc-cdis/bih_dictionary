@@ -1,4 +1,4 @@
-name: Build BIH dictionary
+name: Build PDP dictionary
 
 on: push
 
@@ -7,7 +7,7 @@ jobs:
     name: Build and Deploy Dictionary
     uses: uc-cdis/.github/.github/workflows/dictionary_push.yaml@master
     with:
-      DIRECTORY: "bih_dictionary"
+      DIRECTORY: "pdp_dictionary"
     secrets:
       DICT_AWS_ACCESS_KEY_ID: ${{ secrets.DICT_AWS_ACCESS_KEY_ID }}
       DICT_AWS_SECRET_ACCESS_KEY: ${{ secrets.DICT_AWS_SECRET_ACCESS_KEY }}
