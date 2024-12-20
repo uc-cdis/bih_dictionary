@@ -21,25 +21,17 @@ systemProperties:
   - updated_datetime
 
 links:
-  - exclusive: false
+  - name: datasets
+    backref: subjects
+    label: member_of
+    target_type: dataset
+    multiplicity: many_to_many
     required: true
-    subgroup:
-    - name: datasets
-      backref: subjects
-      label: member_of
-      target_type: dataset
-      multiplicity: many_to_many
-      required: false
-    - name: studies
-      backref: subjects
-      label: member_of
-      target_type: study
-      multiplicity: many_to_many
-      required: false
 
 required:
   - submitter_id
   - type
+  - datasets
 
 uniqueKeys:
   - [id]
@@ -60,19 +52,6 @@ properties:
     enum:
       - "Yes"
       - "No"
-
-  consent_codes:
-    description: >
-        Data Use Restrictions that are used to indicate  permissions/restrictions for datasets and/or materials, and relates to the purposes for which datasets and/or material might be removed, stored or used. \n
-        Based on the Data Use Ontology : see http://www.obofoundry.org/ontology/duo.html \n
-        GRU - For general research use for any research purpose. Example of usage: This includes but is not limited to: health/medical/biomedical purposes, fundamental biology research, the study of population origins or ancestry, statistical methods and algorithms development, and social-sciences research. \n
-        HMB - Use of the data is limited to health/medical/biomedical purposes; does not include the study of population origins or ancestry. \n
-        DS-X - Use of the data must be related to [disease]. \n
-        NPU - Use of the data is limited to not-for-profit organizations and not-for-profit use, non-commercial use. \n
-        IRB - Requestor must provide documentation of local IRB/REC approval.
-    type: array
-    items:
-      type: string
 
   cause_of_death:
     description: >
@@ -98,7 +77,7 @@ properties:
       - "No"
 
   days_to_death:
-    description: The difference in days between the subject's index_date and the date the subject was deceased.
+    description: The difference in days between the subject's index_date and the date the subject was deceased. 
     type: integer
     maximum: 32872
     minimum: 0
@@ -128,7 +107,7 @@ properties:
 
   # subject_id: # just use submitter_id?
   #   description: (0010,0020) A unique identifier for the patient.
-  #   type: string
+  #   type: string    
   #  PatientID: # use subject.submitter_id
   #    description: (0010,0020) A unique identifier for the patient.
   #    type: string
@@ -137,7 +116,7 @@ properties:
     term:
       $ref: "_terms.yaml#/vital_status"
     type: string
-
+    
   zip:
     description: The three-digit United States zip code of residence for any population greater than 20,000. For zip codes where the three digit number represents a population less than 20,000 "000" will be provided.
     type: string
