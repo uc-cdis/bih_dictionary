@@ -1939,6 +1939,16 @@ years_smoked:
     cde_version: 1.0
     term_url: "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3137957&version=1.0"
 
+years_smoked_gt89:
+  description: >
+    Indicate whether the numeric value to represent the number of years a person has been smoking (HARMONIZED) is greater than 89 years.
+  termDef:
+    term: Person Smoking Duration Year Count
+    source: caDSR
+    cde_id: 3137957
+    cde_version: 1.0
+    term_url: "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3137957&version=1.0"
+
 multiplex_barcode:
   description: >
     The barcode/index sequence used. Wrong or missing information may affect analysis results.
