@@ -3,7 +3,7 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "variant_call_file"
 title: Variant Call File
 type: object
-namespace: https://imaging-hub.data-commons.org
+namespace: https://prometheus.data-commons.org/
 category: data_file
 program: '*'
 project: '*'

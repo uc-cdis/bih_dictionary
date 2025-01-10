@@ -4,7 +4,7 @@ id: "image_annotation"
 title: Image Annotation
 type: object
 nodeTerms: null
-namespace: https://imaging-hub.data-commons.org
+namespace: https://prometheus.data-commons.org/
 category: data_file
 program: '*'
 project: '*'

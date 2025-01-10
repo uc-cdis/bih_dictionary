@@ -3,7 +3,7 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "sample"
 title: Sample
 type: object
-namespace: https://imaging-hub.data-commons.org
+namespace: https://prometheus.data-commons.org/
 category: biospecimen
 program: '*'
 project: '*'
@@ -65,8 +65,8 @@ properties:
 
   collection_site:
     description: >
-      Code for BSS collection site. Indicates the site that enrolled the donor, 
-      brain subregions may have more than one site. 
+      Code for BSS collection site. Indicates the site that enrolled the donor,
+      brain subregions may have more than one site.
     type: string
 
   current_weight:

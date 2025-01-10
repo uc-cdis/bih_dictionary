@@ -3,7 +3,7 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "observation"
 title: Observation
 type: object
-namespace: https://imaging-hub.data-commons.org
+namespace: https://prometheus.data-commons.org/
 category: clinical
 program: '*'
 project: '*'
@@ -62,15 +62,15 @@ properties:
   observation_source_concept_id:
     description: This is the concept representing the OBSERVATION_SOURCE_VALUE and may not necessarily be standard. This field is discouraged from use in analysis because it is not required to contain Standard Concepts that are used across the OHDSI community, and should only be used when Standard Concepts do not adequately represent the source detail for the Observation necessary for a given analytic use case. Consider using OBSERVATION_CONCEPT_ID instead to enable standardized analytics that can be consistent across the network. If the OBSERVATION_SOURCE_VALUE is coded in the source data using an OMOP supported vocabulary put the concept id representing the source value here.
     type: string
-  
+
   observation_source_value:
     description: This field houses the verbatim value from the source data representing the Observation that occurred. For example, this could be an ICD10 or Read code. This code is mapped to a Standard Concept in the Standardized Vocabularies and the original code is stored here for reference.
     type: string
-  
+
   observation_type_concept_id:
     description: This field can be used to determine the provenance of the Observation record, as in whether the measurement was from an EHR system, insurance claim, registry, or other sources. Choose the OBSERVATION_TYPE_CONCEPT_ID that best represents the provenance of the record, for example whether it came from an EHR record or billing claim. Accepted Concepts. A more detailed explanation of each Type Concept can be found on the OMOP vocabulary wiki.
     type: string
-  
+
   provider_id:
     description: The provider associated with the observation record, e.g. the provider who ordered the test or the provider who recorded the result. The ETL may need to make a choice as to which PROVIDER_ID to put here. Based on what is available this may or may not be different than the provider associated with the overall VISIT_OCCURRENCE record. For example the admitting vs attending physician on an EHR record.
     type: string
@@ -78,13 +78,13 @@ properties:
   qualifier_concept_id:
     description: This field contains all attributes specifying the clinical fact further, such as as degrees, severities, drug-drug interaction alerts etc. Use your best judgement as to what Concepts to use here and if they are necessary to accurately represent the clinical record. There is no restriction on the domain of these Concepts, they just need to be Standard.
     type: string
-    
+
   qualifier_source_value:
     description: This field houses the verbatim value from the source data representing the qualifier of the Observation that occurred. This code is mapped to a Standard Condition Concept in the Standardized Vocabularies and the original code is stored here for reference.
     type: string
 
   site_id:
-    description: The care site ID. 
+    description: The care site ID.
     type: string
 
   unit_concept_id:
@@ -102,12 +102,12 @@ properties:
   value_as_number:
     description: This is the numerical value of the Result of the Observation, if applicable and available. It is not expected that all Observations will have numeric results, rather, this field is here to house values should they exist.
     type: number
-  
+
   value_as_string:
     description: This is the textual, categorical value of the Result of the Observation, if applicable and available.
     type: string
 
-  value_source_value: 
+  value_source_value:
     description: This field houses the verbatim result value of the Observation from the source data. Do not get confused with the Observation_source_value which captures source value of the observation mapped to observation_concept_id. This field is the observation result value from the source. If the observation_source_value was a question, for example, or an observation that requires a result then this field is the answer/ result from the source data. Store the verbatim value that represents the result of the observation_source_value.
     type: string
 
@@ -256,7 +256,7 @@ properties:
   disease_response: ### From BloodPAC "followup" node
     description: "The observed improvement achieved at a certain point in time during a patient's treatment protocol."
     type: string
- 
+
   ecog_performance_status: ### From BloodPAC "followup" node
     description: "The ECOG functional performance status of the patient/participant."
     enum:

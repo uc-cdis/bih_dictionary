@@ -4,7 +4,7 @@ id: "measurement"
 title: Measurement
 type: object
 nodeTerms: null
-namespace: https://imaging-hub.data-commons.org
+namespace: https://prometheus.data-commons.org/
 category: clinical
 program: '*'
 project: '*'
@@ -78,7 +78,7 @@ properties:
       type: string
 
   site_id:
-    description: The care site ID. 
+    description: The care site ID.
     type: string
 
   unit_concept_id:
@@ -119,7 +119,7 @@ properties:
     description: >
       Resting systolic blood pressure from the upper arm in a clinical setting. (mmHg)
     type: number
-  
+
   age_at_bp_systolic: # from BDC "blood_pressure_test" node
     description: >
       age at measurement of bp_systolic (years)
@@ -192,7 +192,7 @@ properties:
     description: >
       age at measurement of hemoglobin_mcnc_bld. (years) (HARMONIZED)
     type: number
-  
+
   age_at_hematocrit_vfr_bld: ### From BDC "lab_result" node
     description: >
       Measurement of hematocrit, the fraction of volume (vfr) of blood (bld) that is composed of red blood cells. (years) (HARMONIZED)
@@ -332,7 +332,7 @@ properties:
     description: >
       Count by volume, or number concentration (ncnc), of platelets in the blood (bld). (thousands / microliter) (HARMONIZED)
     type: number
-  
+
   pmv_entvol_bld: ### From BDC "lab_result" node
     description: >
       Measurement of the mean volume (entvol) of platelets in the blood (bld), known as mean platelet volume (MPV or PMV). (fL = femtoliter) (HARMONIZED)
@@ -432,10 +432,10 @@ properties:
     description: >
       harmonization unit for rbc_ncnc_bld (A "harmonization unit" is a defined group of subjects whose phenotypes can be similarly processed.) (HARMONIZED)
     type: string
-  
+
   unit_rdw_ratio_rbc: ### From BDC "lab_result" node
     description: >
-      harmonization unit for rdw_ratio_rbc (A "harmonization unit" is a defined group of subjects whose phenotypes can be similarly processed.) (HARMONIZED) 
+      harmonization unit for rdw_ratio_rbc (A "harmonization unit" is a defined group of subjects whose phenotypes can be similarly processed.) (HARMONIZED)
     type: string
 
   unit_total_cholesterol: ### From BDC "lab_result" node
@@ -543,7 +543,7 @@ properties:
     description: >
       Indicate the composition or type of biological sample used for the test (e.g., blood, urine, solid tissue, saliva, etc.)
     type: string
- 
+
   test_type: ### From BloodPAC "diagnostic_test" node
     description: >
       The general type or category of the laboratory or diagnostic test.
@@ -558,5 +558,3 @@ properties:
     description: >
       The numerical value representing the laboratory or diagnostic test measurement of the 'analyte_name'; also indicate the 'test_units'.
     type: number
-
-

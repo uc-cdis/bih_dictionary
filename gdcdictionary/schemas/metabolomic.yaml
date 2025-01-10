@@ -3,7 +3,7 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "metabolomic"
 title: Metabolomic
 type: object
-namespace: https://dcp.bionimbus.org/
+namespace: https://prometheus.data-commons.org/
 category: biospecimen
 program: '*'
 project: '*'

@@ -4,7 +4,7 @@ id: "subject"
 title: Subject
 type: object
 nodeTerms: null
-namespace: https://imaging-hub.data-commons.org
+namespace: https://prometheus.data-commons.org/
 category: administrative
 program: '*'
 project: '*'
@@ -144,4 +144,8 @@ properties:
 
   datasets:
     description: The submitter_id or id of the dataset this subject belongs to, i.e., a link to a record in the parent node.
+    $ref: "_definitions.yaml#/to_many"
+
+  studies:
+    description: The submitter_id or id of the study this subject belongs to, i.e., a link to a record in the parent node.
     $ref: "_definitions.yaml#/to_many"

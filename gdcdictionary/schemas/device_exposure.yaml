@@ -3,7 +3,7 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "device_exposure"
 title: Device Exposure
 type: object
-namespace: https://imaging-hub.data-commons.org
+namespace: https://prometheus.data-commons.org/
 category: clinical
 program: '*'
 project: '*'
@@ -74,7 +74,7 @@ properties:
     type: string
 
   site_id:
-    description: The site ID. 
+    description: The site ID.
     type: string
 
   unique_device_id:

@@ -3,7 +3,7 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "imaging_study"
 title: Imaging Study
 type: object
-namespace: https://imaging-hub.data-commons.org
+namespace: https://prometheus.data-commons.org/
 category: medical_imaging
 program: '*'
 project: '*'
@@ -85,7 +85,7 @@ properties:
     type: string
 
   PatientSex: # use subject.gender as source of truth, but this can store DICOM value
-    description: (0010,0040) the patient's sex; the biologic character or quality that distinguishes male and female from one another as expressed by analysis of the person's gonadal, morphologic  (internal and external), chromosomal, and hormonal characteristics 
+    description: (0010,0040) the patient's sex; the biologic character or quality that distinguishes male and female from one another as expressed by analysis of the person's gonadal, morphologic  (internal and external), chromosomal, and hormonal characteristics
     type: string
 
   StudyDescription:

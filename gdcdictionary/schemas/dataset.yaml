@@ -4,7 +4,7 @@ id: "dataset"
 title: Dataset
 type: object
 nodeTerms: null
-namespace: https://imaging-hub.data-commons.org
+namespace: https://prometheus.data-commons.org/
 category: administrative
 program: '*'
 project: '*'

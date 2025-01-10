@@ -4,7 +4,7 @@ id: "visit"
 title: Visit
 type: object
 nodeTerms: null
-namespace: https://imaging-hub.data-commons.org
+namespace: https://prometheus.data-commons.org/
 category: clinical
 program: '*'
 project: '*'
@@ -53,10 +53,10 @@ properties:
     type: integer
   days_to_icu_discharge:
     description: The number of days between the subject's index date and the date of the patient's ICU discharge..
-    type: integer    
+    type: integer
   discharge_type:
     description: The status or destination of the patient at the time of discharge.
-    type: string      
+    type: string
 
 ## OMOP props
   admitted_from_concept_id:
@@ -92,11 +92,11 @@ properties:
     type: string
 
   site_id:
-    description: The care site ID. 
+    description: The care site ID.
     type: string
 
   visit_concept_id:
-    description: This field contains a concept id representing the kind of visit, like inpatient or outpatient. All concepts in this field should be standard and belong to the Visit domain. Populate this field based on the kind of visit that took place for the person. For example this could be “Inpatient Visit”, “Outpatient Visit”, “Ambulatory Visit”, etc. This table will contain standard concepts in the Visit domain. These concepts are arranged in a hierarchical structure to facilitate cohort definitions by rolling up to generally familiar Visits adopted in most healthcare systems worldwide. 
+    description: This field contains a concept id representing the kind of visit, like inpatient or outpatient. All concepts in this field should be standard and belong to the Visit domain. Populate this field based on the kind of visit that took place for the person. For example this could be “Inpatient Visit”, “Outpatient Visit”, “Ambulatory Visit”, etc. This table will contain standard concepts in the Visit domain. These concepts are arranged in a hierarchical structure to facilitate cohort definitions by rolling up to generally familiar Visits adopted in most healthcare systems worldwide.
     type: string
 
   visit_source_concept_id:
