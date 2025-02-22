@@ -101,6 +101,10 @@ properties:
     description: The version number or specific database name of the source metadata used to create this data hub record.
     type: string
 
+  metadata_source_date:
+    description: The date the metadata was last updated.
+    type: string
+
   primary_site:
     description: The primary body site studied in this dataset.
     type: string
