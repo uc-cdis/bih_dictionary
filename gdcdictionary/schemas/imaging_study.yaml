@@ -48,6 +48,10 @@ properties:
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
 ## Non-DICOM properties
+  study_viewer_url:
+    description: A URL where the imaging study can be viewed.
+    type: string
+
   disease_type:
     description: The primary type of disease studied in this imaging study, if applicable.
     type: string
