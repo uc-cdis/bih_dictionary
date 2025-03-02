@@ -71,7 +71,7 @@ properties:
     description: (0018, 0010) Contrast/Bolus Agent
     type: string
 
-  dicom_viewer_url:
+  series_viewer_url:
     description: A URL where the imaging series can be viewed.
     type: string
 
