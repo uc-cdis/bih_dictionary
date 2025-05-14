@@ -48,6 +48,10 @@ properties:
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
 ## Non-DICOM properties
+  has_viewer_link:
+    description: A boolean indicating whether the imaging study has a viewer link.
+    enum: ["Yes", "No"]
+
   study_viewer_url:
     description: A URL where the imaging study can be viewed.
     type: string
