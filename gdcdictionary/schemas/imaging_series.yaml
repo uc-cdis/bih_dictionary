@@ -74,7 +74,7 @@ properties:
   series_viewer_url:
     description: A URL where the imaging series can be viewed.
     type: string
-  
+
   dicom_viewer_url:
     description: A URL where the dicom images can be viewed.
     type: string
@@ -92,6 +92,10 @@ properties:
     type: array
     items:
       type: string
+
+  has_viewer_link:
+    description: A boolean indicating whether the imaging study has a viewer link.
+    enum: ["Yes", "No"]
 
   MagneticFieldStrength:
     description: (0018, 0087) Magnetic Field Strength
@@ -171,7 +175,3 @@ properties:
   datasets:
     description: The submitter_id or id of the dataset this imaging_series belongs to, i.e., a link to a record in the parent node.
     $ref: "_definitions.yaml#/to_many"
-
-
-
-

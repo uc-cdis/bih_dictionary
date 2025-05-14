@@ -1033,6 +1033,56 @@ library_strand: # TOREVIEW
   description: >
     Library stranded-ness.
 
+loinc_code:
+  description: >
+    The LOINC code assigned based on the study description provided. The Logical Observation Identifiers, Names, and Codes (LOINC) standard is A common language (set of identifiers, names, and codes) for clinical and laboratory observations.
+  termDef:
+    term: "LOINC Code"
+    source: LOINC
+    cde_id: LOINC
+    cde_version: null
+    term_url: "https://loinc.org/search/?t=1&s=playbook"
+
+loinc_contrast:
+  description: >
+    The LOINC indicator noting whether the image was completed with or without contrast, as associated with the assigned LOINC code. The Logical Observation Identifiers, Names, and Codes (LOINC) standard is A common language (set of identifiers, names, and codes) for clinical and laboratory observations.
+  termDef:
+    term: "LOINC Contrast"
+    source: LOINC
+    cde_id: LOINC
+    cde_version: null
+    term_url: "https://loinc.org/search/?t=1&s=playbook"
+
+loinc_long_common_name:
+  description: >
+    The LOINC long common name associated with the assigned LOINC code. The Logical Observation Identifiers, Names, and Codes (LOINC) standard is A common language (set of identifiers, names, and codes) for clinical and laboratory observations.
+  termDef:
+    term: "LOINC Long Common Name"
+    source: LOINC
+    cde_id: LOINC
+    cde_version: null
+    term_url: "https://loinc.org/search/?t=1&s=playbook"
+
+loinc_method:
+  description: >
+    The LOINC method or imaging modality associated with the assigned LOINC code. The Logical Observation Identifiers, Names, and Codes (LOINC) standard is A common language (set of identifiers, names, and codes) for clinical and laboratory observations.
+  termDef:
+    term: "LOINC Method"
+    source: LOINC
+    cde_id: LOINC
+    cde_version: null
+    term_url: "https://loinc.org/search/?t=1&s=playbook"
+
+loinc_system:
+  description: >
+    The LOINC system or body part examined associated with the assigned LOINC code. The Logical Observation Identifiers, Names, and Codes (LOINC) standard is A common language (set of identifiers, names, and codes) for clinical and laboratory observations.
+  termDef:
+    term: "LOINC System"
+    source: LOINC
+    cde_id: LOINC
+    cde_version: null
+    term_url: "https://loinc.org/search/?t=1&s=playbook"
+
 longest_dimension:
   description: >
     Numeric value that represents the longest dimension of the sample, measured in millimeters.
