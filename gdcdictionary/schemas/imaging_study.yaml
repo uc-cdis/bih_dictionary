@@ -89,7 +89,7 @@ properties:
     type: string
 
   PatientSex: # use subject.gender as source of truth, but this can store DICOM value
-    description: (0010,0040) the patient's sex; the biologic character or quality that distinguishes male and female from one another as expressed by analysis of the person's gonadal, morphologic  (internal and external), chromosomal, and hormonal characteristics 
+    description: (0010,0040) the patient's sex; the biologic character or quality that distinguishes male and female from one another as expressed by analysis of the person's gonadal, morphologic  (internal and external), chromosomal, and hormonal characteristics
     type: string
 
   StudyDescription:
@@ -98,6 +98,32 @@ properties:
 
   StudyInstanceUID:
     description: (0020, 000d) Study Instance UID
+    type: string
+
+  ### LOINC harmonization properties
+  loinc_code:
+    term:
+      $ref: "_terms.yaml#/loinc_code"
+    type: string
+
+  loinc_contrast:
+    term:
+      $ref: "_terms.yaml#/loinc_contrast"
+    type: string
+
+  loinc_long_common_name:
+    term:
+      $ref: "_terms.yaml#/loinc_long_common_name"
+    type: string
+
+  loinc_method:
+    term:
+      $ref: "_terms.yaml#/loinc_method"
+    type: string
+
+  loinc_system:
+    term:
+      $ref: "_terms.yaml#/loinc_system"
     type: string
 
   subjects:
