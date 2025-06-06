@@ -97,7 +97,6 @@ properties:
     enum:
       - "Female"
       - "Male"
-      - "no data"
 
   StudyDescription:
     description: (0008, 1030) Study Description.
